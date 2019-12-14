@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 import Navbar from './components/navbar/Navbar.js';
 import RegisterScreen from './components/register_screen/RegisterScreen.js';
 import LoginScreen from './components/login_screen/LoginScreen.js';
 import HomeScreen from './components/home_screen/HomeScreen.js';
-import ListScreen from './components/list_screen/ListScreen.js';
-import ItemScreen from './components/item_screen/ItemScreen.js';
-import DatabaseTester from './test/DatabaseTester'
+import DatabaseTester from './test/DatabaseTester.js';
+import WorkScreen from './components/work_screen/WorkScreen.js';
+
 
 class App extends Component {
   render() {
@@ -28,13 +28,10 @@ class App extends Component {
               <Route path="/databaseTester" component={DatabaseTester} />
               <Route path="/register" component={RegisterScreen} />
               <Route path="/login" component={LoginScreen} />
-
-              <Route path="/todoList/:id/:itemId" component={ItemScreen} />
-
-              
-              <Route path="/todoList/:id" component={ListScreen} />
+              <Route path="/work/:id" component={WorkScreen} />
               <Route path="/:any" component={HomeScreen} />
             </Switch>
+            
           </div>
         </BrowserRouter>
       );
@@ -44,9 +41,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  auth: state.firebase.auth,
-});
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    todoLists: state.firestore.ordered.todoLists,
+  }
+};
 
 export default compose(
   firebaseConnect(),

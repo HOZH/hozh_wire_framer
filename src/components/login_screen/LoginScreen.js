@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { firebaseConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
-
+import Banner from '../home_screen/Banner'
 import { loginHandler } from '../../store/database/asynchHandler'
 
 class LoginScreen extends Component {
@@ -13,11 +13,7 @@ class LoginScreen extends Component {
   }
 
   handleChange = (e) => {
-
-    console.log(e)
     const { target } = e;
-
-    console.log(target)
 
     this.setState(state => ({
       ...state,
@@ -28,11 +24,9 @@ class LoginScreen extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log(e)
-
+    // As we use react-redux-firebas-v3 we need to pass firebase object to
+    // authActions to be authorized by using firebse.auth method
     const { props, state } = this;
-    console.log(props)
-    console.log(state)
     const { firebase } = props;
     const credentials = { ...state };
     const authData = {
@@ -67,27 +61,32 @@ class LoginScreen extends Component {
               {authError ? <div className="red-text center"><p>{authError}</p></div> : null}
             </div>
           </form>
-
-          <div className="col s8 banner">
-            @todo<br />
-            List Maker
+          <div className="col s8">
+            <Banner />
           </div>
+          
         </div>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  authError: state.auth.authError,
-  auth: state.firebase.auth,
-});
+const mapStateToProps = state => {
+  console.log(state)
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
+  }
+};
 
 const mapDispatchToProps = dispatch => ({
   login: authData => dispatch(loginHandler(authData)),
 });
 
-
+// We need firebaseConnect function to provide to this component
+// firebase object with auth method.
+// You can find more information on the link below
+// http://docs.react-redux-firebase.com/history/v3.0.0/docs/auth.html
 export default compose(
   firebaseConnect(),
   connect(mapStateToProps, mapDispatchToProps),

@@ -15,7 +15,6 @@ class RegisterScreen extends Component {
 
   handleChange = (e) => {
     const { target } = e;
-
     this.setState(state => ({
       ...state,
       [target.id]: target.value,
@@ -24,7 +23,6 @@ class RegisterScreen extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-
     const { props, state } = this;
     const { firebase } = props;
     const newUser = { ...state };

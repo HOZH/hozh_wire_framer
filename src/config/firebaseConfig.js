@@ -4,16 +4,26 @@ import 'firebase/auth';
 
 // THIS IS USED TO INITIALIZE THE firebase OBJECT
 // PUT YOUR FIREBASE PROJECT CONFIG STUFF HERE
+// const firebaseConfig = {
+//     apiKey: "AIzaSyBP-pCijY5txVIDv0hZIpA6aYoOZK35qxY",
+//     authDomain: "wireframer-e5e85.firebaseapp.com",
+//     databaseURL: "https://wireframer-e5e85.firebaseio.com",
+//     projectId: "wireframer-e5e85",
+//     storageBucket: "wireframer-e5e85.appspot.com",
+//     messagingSenderId: "977237593197",
+//     appId: "1:977237593197:web:5c75f254d1400b01748364"
+//   };
+
 var firebaseConfig = {
-  apiKey: "AIzaSyAC4M-Ct10pTD7wRYNR9yc8-SFhIo2kPjo",
-  authDomain: "hong-zheng-hw3.firebaseapp.com",
-  databaseURL: "https://hong-zheng-hw3.firebaseio.com",
-  projectId: "hong-zheng-hw3",
-  storageBucket: "hong-zheng-hw3.appspot.com",
-  messagingSenderId: "91291002343",
-  appId: "1:91291002343:web:f653c4db79bc94ad4f0942",
-  measurementId: "G-1KVVK4X3FL"
-  };
+  apiKey: "AIzaSyCENiYkOKcGwiCoU4Ecb1mCk7jhk164PHo",
+  authDomain: "hong-zheng-final.firebaseapp.com",
+  databaseURL: "https://hong-zheng-final.firebaseio.com",
+  projectId: "hong-zheng-final",
+  storageBucket: "hong-zheng-final.appspot.com",
+  messagingSenderId: "937444998226",
+  appId: "1:937444998226:web:bb4f760c052dfae942f38b",
+  measurementId: "G-54C8PLL8B9"
+};
 firebase.initializeApp(firebaseConfig);
 
 // NOW THE firebase OBJECT CAN BE CONNECTED TO THE STORE
