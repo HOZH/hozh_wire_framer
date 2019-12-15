@@ -28,7 +28,7 @@ class DisplayPlace extends Component {
                                 <Button small
                                     waves="red"
                                     node="button"
-                                    className="col s3 work-top-button zoomBt"
+                                    className="col s3 work-top-button zoomBtIn"
                                     icon={<Icon>zoom_in</Icon>}
                                     onClick={zoomIn}
                                     style={{
@@ -39,7 +39,7 @@ class DisplayPlace extends Component {
                                 <Button small
                                     waves="red"
                                     node="button"
-                                    className="col s3 work-top-button zoomBt"
+                                    className="col s3 work-top-button zoomBtOut"
 
                                     icon={<Icon>zoom_out</Icon>}
                                     onClick={zoomOut}>

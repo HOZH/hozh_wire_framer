@@ -11,7 +11,21 @@
     height: 90% !important
 }
 
-.zoomBt{
+.zoomBtIn{
 
     background-color: blanchedalmond;
+    position: absolute;
+    left: 5% !important;
+    top: 9% !important;
+    width:5% !important
+
+}
+.zoomBtOut{
+
+    background-color: blanchedalmond;
+    position: absolute;
+    left: 11% !important;
+    top: 9% !important;
+    width:5% !important
+    
 }

@@ -73,7 +73,7 @@ class ToolMapLeft extends Component {
                         waves="teal"
                         node="button"
                         className="work-top-button"
-                        style={{ marginLeft: "75%" }}
+                        style={{ marginLeft: "55%" }}
                         icon={<Icon>cancel</Icon>}
                         onClick={this.handleModalOpen.bind(this, "cancel")}>
                     </Button>
