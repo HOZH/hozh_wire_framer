@@ -48,13 +48,15 @@ const mapStateToProps = (state) => {
 };
 
 
-export default compose(
-    connect(mapStateToProps),
-    firestoreConnect(state => [
-        {
-            collection: 'workLists',
-            orderBy: ['timestamp', 'desc'],
-            where: [['owner', '==', state.auth.uid]],
-        },
-    ]),
-)(HomeScreen);
+// export default compose(
+//     connect(mapStateToProps),
+//     firestoreConnect(state => [
+//         {
+//             collection: 'workLists',
+//             orderBy: ['timestamp', 'desc'],
+//             where: [['owner', '==', state.auth.uid]],
+//         },
+//     ]),
+// )(HomeScreen);
+
+export default compose(connect(mapStateToProps))(HomeScreen);
