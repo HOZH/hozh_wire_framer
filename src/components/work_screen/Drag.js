@@ -36,17 +36,37 @@ export default class Drag extends Component {
 
     createItemByType = () => {
         const item = this.props.item;
-        const buttonStyle = {
-            width: "90%", height: "90%",
+        const { borderRadius,borderColor,borderWidth,fontSize,backgroundColor} = item
+        const itemStyle = {
+            "width":"100%",
+            "height":"100%",
+            "borderRadius":borderRadius+"px",
+            "borderColor":borderColor+"",
+            "borderWidth":borderWidth+"",
+            "fontSize":fontSize+"",
+            "backgroundColor":backgroundColor+"",
+            // borderStyle:"solid"
+
         }
         if (item.type === "CONTAINER")
-            return (<div className="dragger" style={buttonStyle}>{item ? item.property : ""}</div>);
+            return (<div className="dragger" style={itemStyle}>{item ? item.property : ""}</div>);
         if (item.type === "BUTTON")
-            return (<button className="dragger" style={buttonStyle}>{item ? item.property : ""}</button>);
+            // return (<button className="dragger" style={itemStyle}>{item ? item.property : ""}</button>);
+            // return (<input type="button"></input>)
+            return (<button className="dragger btn--floating btn_large waves-effect waves-light" 
+            // style={itemStyle}
+            style={{...itemStyle,background:"inherit"}}
+            >{item ? item.property : ""}</button>);
+
         if (item.type === "LABEL")
-            return (<label className="dragger" style={buttonStyle}>{item ? item.property : ""}</label>);
+            return (<label className="dragger" 
+            style={{...itemStyle,fontSize:fontSize+"px"}}
+            >{item ? item.property : ""}</label>);
         if (item.type === "INPUT")
-            return (<input className="dragger" value={item ? item.property : ""} ></input>);
+            return (<input className="dragger" value={item ? item.property : ""} 
+            style={itemStyle}
+            // style={{}}
+             ></input>);
         return null;
     }
 
@@ -54,6 +74,7 @@ export default class Drag extends Component {
         const item = this.props.item;
         const { fontSize, borderWidth, borderRadius, borderColor, backGroundColor } = item;
         let style = {
+            // height:"70%",
             fontSize: fontSize + "px",
             borderWidth: borderWidth + "px",
             borderRadius: borderRadius + "px",

@@ -13,7 +13,7 @@ class DisplayPlace extends Component {
         console.log(this.props.state)
         const items = this.props.state.work.items;
         return (
-            <div className="col s6 display-place total-toolmap">
+            <div className="col s6 display-place total-toolmap" >
                 <TransformWrapper
                     defaultScale={1}
                     defaultPositionX={200}
@@ -39,12 +39,13 @@ class DisplayPlace extends Component {
                                     onClick={zoomOut}>
                                 </Button>
                             </div>
-                            <TransformComponent>
+                            <TransformComponent style={{background:"white"}} >
                                 <div style={{ height: "100%", width: "100%" }}>
                                     <div className="display-board center" style={{
                                         width: this.props.state.work.screenWidth + "px",
                                         height: this.props.state.work.screenHeight + "px",
                                         zIndex: 3,
+                                        background:"white"
                                     }}
                                         onClick={this.props.handleUnselect}>
                                         {

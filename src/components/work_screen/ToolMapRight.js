@@ -23,7 +23,8 @@ class ToolMapRight extends Component {
     }
 
     handleSelectedChange = (e) => {
-        const target = e.target;
+        // e.stopPropagation();
+                const target = e.target;
 
         this.props.state.selected[target.id] = target.value;
         this.setState(this.props.state.selected);

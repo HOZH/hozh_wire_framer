@@ -146,10 +146,13 @@ class WorkScreen extends Component {
   }
 
   handleKeyEvent = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+
     console.log(e.key);
     console.log(this.state.selected);
     if (e.key === "d" && e.ctrlKey && this.state.selected) {
+      e.preventDefault();
+
 console.log('dup');
       this.handleDuplicate();
     } else if ((e.key == "Delete"||e.keycode==8) && this.state.selected) {
@@ -208,7 +211,7 @@ console.log('dup');
           handleAddItem={this.handleAddItem}
           handleWorkModified={this.handleWorkModified} />
 
-        <DisplayPlace work={work} state={this.state}
+        <DisplayPlace  work={work} state={this.state}
           handleWorkModified={this.handleWorkModified}
           handleWorkUnmodified={this.handleWorkUnmodified}
           handleSelect={this.handleSelect}
