@@ -12,8 +12,6 @@ import DatabaseTester from './test/DatabaseTester.js';
 import WorkScreen from './components/work_screen/WorkScreen.js';
 
 
-
-
 class App extends Component {
   render() {
     const { auth } = this.props;
@@ -33,7 +31,7 @@ class App extends Component {
               <Route path="/work/:id" component={WorkScreen} />
               <Route path="/:any" component={HomeScreen} />
             </Switch>
-            
+
           </div>
         </BrowserRouter>
       );
@@ -46,7 +44,6 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    // todoLists: state.firestore.ordered.todoLists,
   }
 };
 

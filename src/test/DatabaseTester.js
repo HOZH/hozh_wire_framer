@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux';
-import worksJson from './TestTodoListData.json'
+import todoJson from './TestTodoListData.json'
 import { getFirestore } from 'redux-firestore';
 
 class DatabaseTester extends React.Component {
@@ -10,8 +10,8 @@ class DatabaseTester extends React.Component {
     // TO LOG IN
     handleClear = () => {
         const fireStore = getFirestore();
-        fireStore.collection('workLists').get().then(function(querySnapshot){
-            querySnapshot.forEach(function(doc) {
+        fireStore.collection('workLists').get().then(function (querySnapshot) {
+            querySnapshot.forEach(function (doc) {
                 fireStore.collection('workLists').doc(doc.id).delete();
             })
         });
@@ -19,19 +19,19 @@ class DatabaseTester extends React.Component {
 
     handleReset = () => {
         const fireStore = getFirestore();
-        worksJson.workLists.forEach(work => {
+        todoJson.workLists.forEach(todoListJson => {
             fireStore.collection('workLists').add({
-                    name: work.name,
-                    owner: work.owner,
-                    items: work.items,
-                    height:work.height,
-                    width: work.width,
-                    timestamp: fireStore.FieldValue.serverTimestamp()
-                }).then(() => {
-                    console.log("DATABASE RESET");
-                }).catch((err) => {
-                    console.log(err);
-                });
+                name: todoListJson.name,
+                owner: todoListJson.owner,
+                items: todoListJson.items,
+                screenWidth: todoListJson.screenWidth,
+                screenHeight: todoListJson.screenHeight,
+                timestamp: fireStore.FieldValue.serverTimestamp()
+            }).then(() => {
+                console.log("DATABASE RESET");
+            }).catch((err) => {
+                console.log(err);
+            });
         });
     }
 

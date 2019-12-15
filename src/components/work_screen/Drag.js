@@ -1,95 +1,96 @@
 import React, { Component } from 'react'
 import ResizableRect from 'react-resizable-rotatable-draggable'
+import { Rnd } from "react-rnd";
+import { interfaceDeclaration } from '@babel/types';
 
-
+const style = {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    border: "solid 1px #ddd",
+    background: "#f0f0f0"
+};
 
 export default class Drag extends Component {
 
-    componentDidMount(){
+    handleResize = (e, direction, ref, delta, position) => {
+        // type is a string and it shows which resize-handler you clicked
+        // e.g. if you clicked top-right handler, then type is 'tr'
+        let item = this.props.item;
 
-        // console.log('after drag mounted', this.props);
-  
-      }
-    
-    constructor(props) {
-        super(props)
-        let { top, left, width, height } = this.props.item
-        this.state = {
-            width: width||100,
-            height: height||100,
-            top: top||0,
-            left: left||0
+        item.width = ref.style.width;
+        item.height = ref.style.height;
+        this.setState(this.props.item);
+        this.props.handleWorkModified();
+    }
+
+
+    handleDrag = (e, d) => {
+        if (this.props.item.selected) {
+            this.props.item.left = d.x;
+            this.props.item.top = d.y;
+            this.setState(this.props.item);
+            this.props.handleWorkModified();
         }
     }
 
-    handleResize = (style) => {
-        // type is a string and it shows which resize-handler you clicked
-        // e.g. if you clicked top-right handler, then type is 'tr'
-        let { top, left, width, height } = style
-        top = Math.round(top)
-        left = Math.round(left)
-        width = Math.round(width)
-        height = Math.round(height)
-        this.setState({
-            top,
-            left,
-            width,
-            height
-        })
-
+    createItemByType = () => {
+        const item = this.props.item;
+        const buttonStyle = {
+            width: "90%", height: "90%",
+        }
+        if (item.type === "CONTAINER")
+            return (<div className="dragger" style={buttonStyle}>{item ? item.property : ""}</div>);
+        if (item.type === "BUTTON")
+            return (<button className="dragger" style={buttonStyle}>{item ? item.property : ""}</button>);
+        if (item.type === "LABEL")
+            return (<label className="dragger" style={buttonStyle}>{item ? item.property : ""}</label>);
+        if (item.type === "INPUT")
+            return (<input className="dragger" value={item ? item.property : ""} ></input>);
+        return null;
     }
-
-    // handleRotate = (rotateAngle) => {
-    //     this.setState({
-    //         rotateAngle
-    //     })
-    // }
-
-    handleDrag = (deltaX, deltaY) => {
-        this.setState({
-            left: this.state.left + deltaX,
-            top: this.state.top + deltaY
-        })
-    }
-
 
     render() {
-        const { width, top, left, height, rotateAngle } = this.state
+        const item = this.props.item;
+        const { fontSize, borderWidth, borderRadius, borderColor, backGroundColor } = item;
+        let style = {
+            fontSize: fontSize + "px",
+            borderWidth: borderWidth + "px",
+            borderRadius: borderRadius + "px",
+            borderColor: borderColor,
+            borderStyle: "solid",
+            backgroundColor: backGroundColor + "",
+        }
+        const cornerStyle = {
+            border: "1px solid black",
+            width: 10,
+            height: 10,
 
-
-        // console.log('drag page',this.props);
+        }
 
         return (
-            <div>
-                <ResizableRect
-                    left={left}
-                    top={top}
-                    width={width}
-                    height={height}
-                    // rotateAngle={rotateAngle}
-                    // aspectRatio={false}
-                    // minWidth={10}
-                    // minHeight={10}
-                    // zoomable='n, w, s, e, nw, ne, se, sw'
-                    zoomable='nw, ne, se, sw'
 
-                    // rotatable={true}
-                    // onRotateStart={this.handleRotateStart}
-                    // onRotate={this.handleRotate}
-                    // onRotateEnd={this.handleRotateEnd}
-                    // onResizeStart={this.handleResizeStart}
-                    onResize={this.handleResize}
-                    // onResizeEnd={this.handleUp}
-                    // onDragStart={this.handleDragStart}
-                    onDrag={this.handleDrag}
-                    // onDragEnd={this.handleDragEnd}
-                    className="drag"
-                >
-                  {/* <div>
-                      <p>123</p>
-                  </div> */}
-                </ResizableRect>
-            </div>
+            <div id={item.id} style={{ overflow: "auto" }} className={this.typeControll}>
+                <Rnd
+                    style={style}
+                    default={{
+                        x: item.left,
+                        y: item.top,
+                        width: item.width,
+                        height: item.height
+                    }}
+                    onDragStop={this.handleDrag}
+                    onResizeStop={this.handleResize}
+                    resizeHandleStyles={{
+                        bottomLeft: item.selected ? cornerStyle : "",
+                        bottomRight: item.selected ? cornerStyle : "",
+                        topLeft: item.selected ? cornerStyle : "",
+                        topRight: item.selected ? cornerStyle : "",
+                    }}
+                >{this.createItemByType()}
+                </Rnd>
+
+            </div >
         )
     }
 }

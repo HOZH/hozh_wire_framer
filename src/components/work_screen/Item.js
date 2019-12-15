@@ -1,57 +1,24 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import Drag from './Drag'
 
-export default class Item extends Component {
-
-    componentDidMount(){
-        // console.log(12234,this.state,this.props);
-        // console.log(313,this.state);
-        // console.log(313,this.props);
-        this.setState({item:this.props.item})
-
-      }
-    
-
-    constructor() {
 
 
-    
-  
-        super()
-        console.log(this.props);
-    
-        this.state = {
-          item:null
-      }
-    
-    }
-    
 
- 
-    
+class Item extends Component {
+
     render() {
-
-        // console.log("item page",this.state,this.props)
+        const item = this.props.item;
         return (
-            <div>
-        
-                {/* <Drag item={this.state.item}></Drag> */}
+            <div onMouseDown={this.props.handleSelect.bind(this, item)}
+                onClick={this.props.handleSelect.bind(this, item)}>
+                <Drag item={item}
+                    handleDrag={this.props.handleDrag}
+                    handleWorkModified={this.props.handleWorkModified}
+                    state={this.props.state}></Drag>
+            </div >
 
-
-                <Drag item={this.props.item}></Drag>
-
-                {/* <Drag 
-                                left={this.props.item.position.left}
-
-                                top={this.props.item.position.top}
-
-                height={this.props.item.position.height}
-                width={this.props.item.position.width}
-
-                ></Drag> */}
-
-                
-            </div>
-        )
+        );
     }
 }
+
+export default Item;

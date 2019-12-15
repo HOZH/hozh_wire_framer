@@ -66,12 +66,14 @@ cursor: pointer;
 }
 
 .work-input {
-  height: 1.5rem !important;
+  left:10%;
+  height: 1rem !important;
 }
 .input-field {
-  left:10%;
+
   width: 80%;
-  margin-top: 3%;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .work-name-input {
   text-align: center;
@@ -102,6 +104,18 @@ cursor: pointer;
   margin-left: -10px;
   margin-right: -10px;
 }
+.frame-properties{
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  height:25%;
+}
+.range-field{
+  top:-15px;
+  height:1%;
+  width: 90%;
+  left:5%;
+}
 .work-card {
   padding : 1px;
   position : relative;
@@ -117,17 +131,22 @@ cursor: pointer;
   font-weight: bold;
   color: black;
   text-align: center;
+  margin-top: 10%;
 }
+.frame-label{
+  left:0% !important
+}
+
 .work-property-label {
   position: relative;
   font-size: medium;
   font-weight: bold;
   color: black;
-  text-align: center;
+  width: 80%;
 }
 
 .work-properties {
-  padding-top: 10%;
+  padding-bottom: 10%;
 }
 
 .work-property {
@@ -135,11 +154,66 @@ cursor: pointer;
 }
 
 .display-place {
-  background-color: white;
+  background-color: rgb(143, 143, 202);
   height: 600px;
 }
-
+.display-board{
+  border-color: black;
+  border-width: 2px;
+  border-style: solid;
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 .work-top-button {
+  margin-left: 50%;
   background-color: rgba(0,0,0,0);
   color:black;
+}
+
+.gblcbk {
+  cursor: move;
+  z-index: 0 !important;
+  border: 1px solid rgba(0,0,0,0) !important;
+}
+
+.TransformComponent-module_container__3NwNd{
+  width:100% !important;
+  height: 100% !important;
+  overflow: auto !important;
+}
+
+.zoom-tool{
+  margin-left: -55%;
+  width: 52%;
+  margin-top: 1%
+}
+
+.update-frame-button{
+  z-index: 12;
+  position: absolute;
+  top: 17% ;
+  left:91%;
+}
+
+.modal-button{
+  margin-left: 1%;
+}
+
+.frame-button{
+  cursor: disabled;
+  display: none;
+}
+
+.dragger{
+  display: auto !important;
+  text-align: center;
+}
+
+.dragger-button:hover{
+  background-color: blueviolet;
+}
+
+.corner-box{
+  border: 1px solid black;
 }

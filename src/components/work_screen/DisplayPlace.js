@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { Icon, Button, Modal, TextInput } from 'react-materialize';
+import { Icon, Button } from 'react-materialize';
 
+import Item from "./Item"
 
-import Drag from './Drag'
-import Item from './Item'
 
 
 class DisplayPlace extends Component {
 
 
     render() {
-        console.log("initing displayPlace");
-        console.log(this.props);
+        console.log(this.props.state)
+        const items = this.props.state.work.items;
         return (
-            <div className="col s6 display-place total-toolmap" style={{backgroundColor:"aqua"}}>
-
+            <div className="col s6 display-place total-toolmap">
                 <TransformWrapper
                     defaultScale={1}
                     defaultPositionX={200}
@@ -28,50 +26,35 @@ class DisplayPlace extends Component {
                                 <Button small
                                     waves="red"
                                     node="button"
-                                    className="col s3 work-top-button zoomBtIn"
+                                    className="col s3 work-top-button"
                                     icon={<Icon>zoom_in</Icon>}
-                                    onClick={zoomIn}
-                                    style={{
-                                        
-                                    }}
-                                    >
+                                    onClick={zoomIn}>
                                 </Button>
                                 <Button small
                                     waves="red"
                                     node="button"
-                                    className="col s3 work-top-button zoomBtOut"
+                                    className="col s3 work-top-button"
 
                                     icon={<Icon>zoom_out</Icon>}
                                     onClick={zoomOut}>
                                 </Button>
                             </div>
-                            <TransformComponent style={{width:"100%"}}>
+                            <TransformComponent>
                                 <div style={{ height: "100%", width: "100%" }}>
-                                    <div className="display-board center middleCard" style={{
-                                        border: "1px black solid",
-
-                                        backgroundColor:"white",
-                                        width: this.props.tempWidth ? this.props.tempWidth + "px" : this.props.work.width + "px",
-                                        //  height: this.props.work.height? this.props.work.height+"px":400+"px"
-                                        height: this.props.tempHeight ? this.props.tempHeight + "px" : this.props.work.height + "px",
-                                        // width: this.props.state.screenWidth + "px",
-                                        // height: this.props.state.screenHeight + "px",
+                                    <div className="display-board center" style={{
+                                        width: this.props.state.work.screenWidth + "px",
+                                        height: this.props.state.work.screenHeight + "px",
                                         zIndex: 3,
-                                    }}>
-                                        {this.props.tempHeight}
-                                        <br></br>
-                                        {this.props.tempWidth} 
-                                        {/* {this.props.work.items.map((current)=>{
-                                            console.log("current",current);
-                                            return (
-                                                
-                                                <Item item={current}></Item>
-
-                                            )
-                                        })} */}
-
- {/* <Item></Item> */}
-                                        {/* <Drag></Drag> */}
+                                    }}
+                                        onClick={this.props.handleUnselect}>
+                                        {
+                                            items && items.map(item => (
+                                                <Item item={item} key={item.id}
+                                                    handleSelect={this.props.handleSelect}
+                                                    handleWorkModified={this.props.handleWorkModified}
+                                                    state={this.props.state} />
+                                            ))
+                                        }
                                     </div>
                                 </div>
                             </TransformComponent>

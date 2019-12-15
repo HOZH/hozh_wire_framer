@@ -8,78 +8,17 @@ import { compose } from 'redux';
 
 class ToolMapLeft extends Component {
 
-    
-
-    state = {
-        name: null,
-        owner: null,
-        timestamp: null,
-        modalActive1: false,
-        modalActive2: false,
-    }
-
-    handleModalOpen = (type) => {
-        if (type === "save")
-            this.setState({ modalActive1: true });
-        else if (type === "cancel")
-            this.setState({ modalActive2: true });
-    }
-
-    handleModalClose = (type) => {
-
-        if (type === "save")
-            this.setState({ modalActive1: false });
-        else if (type === "cancel")
-            this.setState({ modalActive2: false });
-
-    }
-
     handleChange = (e) => {
+
         e.persist();
         const target = e.target;
-        this.setState(state => ({
-            ...state,
-            [target.id]: target.value,
-        }));
+        this.props.state.work[target.id] = target.value;
+        this.props.handleWorkModified();
+        this.setState(this.props.state.work);
     }
 
-    handleSaveWork = (type) => {
-        if (type === "cancel")
-            this.props.handleGoHome();
-        this.props.handleSaveWork(this.state);
-        this.handleModalClose(type);
-    }
-
-
-    formBox = (e)=>{
-        console.log(e)
-        console.log('forming box')
-
-
-        this.props.handleAddItem(e)
-    }
-
-    goBack =()=>{
-
-        console.log(this)
-
-        console.log(this.props)
-
-        // this.props.history.push('/')
-    }
-
-    handleInitState = () => {
-        if (this.state.name === null && this.props.work.name)
-            // eslint-disable-next-line
-            this.state.name = this.props.work.name ? this.props.work.name : "";
-        if (this.state.owner === null && this.props.auth.uid)
-            // eslint-disable-next-line
-            this.state.owner = this.props.auth.uid ? this.props.auth.uid : "";
-    }
 
     render() {
-        const { work } = this.props;
-        this.handleInitState();
         return (
             <div className="col s3 total-toolmap" >
                 <div className="tool-map row" style={{ height: "6.5%" }}>
@@ -87,26 +26,23 @@ class ToolMapLeft extends Component {
                         waves="purple"
                         node="button"
                         className="work-top-button"
+                        style={{ width: "25%" }}
                         icon={<Icon>save</Icon>}
-                        onClick={this.handleModalOpen.bind(this, "save")}>
+                        onClick={this.props.handleModalOpen.bind(this, "save")}>
                     </Button>
                     <Button small
                         waves="teal"
                         node="button"
                         className="work-top-button"
-                        style={{ marginLeft: "55%" }}
+                        style={{ marginLeft: "75%", marginTop: "-25%", width: "25%" }}
                         icon={<Icon>cancel</Icon>}
-                        // onClick={this.handleModalOpen.bind(this, "cancel")}
-                        onClick={this.goBack}
-
-                        >
+                        onClick={this.props.handleModalOpen.bind(this, "cancel")}>
                     </Button>
                     <Modal
                         bottomSheet={false}
                         fixedFooter={false}
                         header="Save Work?"
-                        id={"modal-" + work.id}
-                        open={this.state.modalActive1}
+                        open={this.props.state.modalActive1}
                         style={{ maxHeight: 'none' }}
                         options={{
                             dismissible: false,
@@ -125,18 +61,17 @@ class ToolMapLeft extends Component {
                         <section className="dialog_content">
                             <p><strong>Are you sure you want to save this work?</strong></p>
                         </section>
-                        <Button waves="orange" id="dialog_yes_button" className='btn' onClick={this.handleSaveWork.bind(this, "save")}>Yes</Button>
-                        <Button waves="yellow" id="dialog_no_button" className='btn' onClick={this.handleModalClose.bind(this, "save")}>No</Button>
+                        <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "save")}>Yes</Button>
+                        <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "save")}>No</Button>
                         <footer className="dialog_footer">
-                           test msg...
+                            The list will not be retreivable.
                     </footer>
                     </Modal>
                     <Modal
                         bottomSheet={false}
                         fixedFooter={false}
                         header="Cancel Work?"
-                        id={"modal-" + work.id}
-                        open={this.state.modalActive2}
+                        open={this.props.state.modalActive2}
                         style={{ maxHeight: 'none' }}
                         options={{
                             dismissible: false,
@@ -154,11 +89,13 @@ class ToolMapLeft extends Component {
                     >
                         <section className="dialog_content">
                             <p><strong>Are you sure you want to cancel this work?</strong></p>
+                            <p><strong>THERE ARE UNSAVE MODIFICATIONS!!!!!!!!!</strong></p>
                         </section>
-                        <Button waves="orange" id="dialog_yes_button" className='btn' onClick={this.handleSaveWork.bind(this, "cancel")}>Yes</Button>
-                        <Button waves="yellow" id="dialog_no_button" className='btn' onClick={this.handleModalClose.bind(this, "cancel")}>No</Button>
+                        <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "cancel")}>Yes</Button>
+                        <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "cancel")}>No</Button>
+                        <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "cancel-save")}>Save and Quit</Button>
                         <footer className="dialog_footer">
-                        test msg...
+                            The will not be retreivable.
                     </footer>
                     </Modal>
                 </div>
@@ -166,23 +103,23 @@ class ToolMapLeft extends Component {
                 <div className="tool-map row" style={{ height: "93.5%" }}>
                     <div className="work-name-input">
                         <div className="work-property-label">Work Name</div>
-                        <TextInput placeholder="Insert here" className="work-input" id='name' value={this.state.name ? this.state.name : ""}
+                        <TextInput placeholder="Insert here" className="work-input" id='name' value={this.props.state.work ? this.props.state.work.name : ""}
                             onChange={this.handleChange} />
                     </div>
                     <div className="work-card" style={{ marginTop: '20%' }}>
-                        <div className="work-container" onClick={this.formBox.bind(this,'container')}></div>
-                        <label className="work-property-label" >container</label>
+                        <div className="work-container" onClick={this.props.handleAddItem.bind(this, "Container")}></div>
+                        <label className="work-property-label">container</label>
                     </div>
                     <div className="work-card">
-                        <p style={{ cursor: "pointer" }}>prompt for input:</p>
-                        <p className="work-property-label">label</p>
+                        <p style={{ cursor: "pointer" }} onClick={this.props.handleAddItem.bind(this, "Label")}>prompt for input:</p>
+                        <p className="work-property-label" style={{ marginLeft: "10%" }}>label</p>
                     </div>
                     <div className="work-card">
-                        <div className="work-button">submit</div>
+                        <div className="work-button" onClick={this.props.handleAddItem.bind(this, "Button")}>submit</div>
                         <label className="work-property-label">button</label>
                     </div>
                     <div className="work-card">
-                        <div className="work-textfield">input</div>
+                        <div className="work-textfield" onClick={this.props.handleAddItem.bind(this, "Input")}>input</div>
                         <label className="work-property-label">textfield</label>
                     </div>
                 </div>
@@ -192,7 +129,7 @@ class ToolMapLeft extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
     return {
         auth: state.firebase.auth,
     };
