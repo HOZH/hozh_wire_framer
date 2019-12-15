@@ -4,14 +4,21 @@ import ResizableRect from 'react-resizable-rotatable-draggable'
 
 
 export default class Drag extends Component {
-    constructor() {
-        super()
+
+    componentDidMount(){
+
+        // console.log('after drag mounted', this.props);
+  
+      }
+    
+    constructor(props) {
+        super(props)
+        let { top, left, width, height } = this.props.item
         this.state = {
-            width: 100,
-            height: 100,
-            top: 0,
-            left: 0,
-            // rotateAngle: 0
+            width: width||100,
+            height: height||100,
+            top: top||0,
+            left: left||0
         }
     }
 
@@ -29,7 +36,7 @@ export default class Drag extends Component {
             width,
             height
         })
-        
+
     }
 
     // handleRotate = (rotateAngle) => {
@@ -48,6 +55,9 @@ export default class Drag extends Component {
 
     render() {
         const { width, top, left, height, rotateAngle } = this.state
+
+
+        // console.log('drag page',this.props);
 
         return (
             <div>

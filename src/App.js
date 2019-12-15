@@ -46,7 +46,7 @@ class App extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    todoLists: state.firestore.ordered.todoLists,
+    // todoLists: state.firestore.ordered.todoLists,
   }
 };
 

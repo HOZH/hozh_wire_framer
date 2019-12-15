@@ -34,8 +34,19 @@ class WorkLists extends Component{
 }
 
 const mapStateToProps = (state) => {
+
+    const data = state.firestore.data.workLists
+    let workLists = []
+    for (let i in data)
+    {
+        data[i]["id"] =i
+        workLists.push(data[i])
+
+    }
     return {
-        workLists: state.firestore.ordered.workLists,
+        // workLists: state.firestore.ordered.workLists,
+        workLists,
+
         auth: state.firebase.auth,
     };
 };

@@ -23,17 +23,33 @@ class WorkScreen extends Component {
   //   "items": []
   // }
 
-  constructor() {
+  componentDidMount(){
+    // console.log(12234,this.state,this.props);
+    console.log(313,this.state);
+    console.log(313,this.props);
+    if(this.props.work!=null)this.setState({items:[...this.props.work.items]})
 
-    super()
+  }
+
+  constructor(props) {
+
+
+    
+  
+    super(props)
+
+    console.log("initing workScreen",this.props)
+
     this.state = {
       id: null,
       owner: null,
       name: null,
       height: null,
       width: null,
+      items:[],
 
-      items: []
+      // items:this.props.work?this.props.work.items:[],
+      temp:1
     }
   }
 
@@ -57,6 +73,7 @@ class WorkScreen extends Component {
         owner: state.owner,
         height: this.state.height,
         width: this.state.width,
+        items: this.state.items,
         timestamp: state.timestamp
       })
     else
@@ -65,6 +82,8 @@ class WorkScreen extends Component {
         owner: state.owner,
         height: this.state.height,
         width: this.state.width,
+        items: this.state.items,
+
         timestamp: state.timestamp
       })
   }
@@ -90,12 +109,21 @@ class WorkScreen extends Component {
 
 
   handleAddItem = (type) => {
+    console.log('adding item');
+
+    console.log(this.state.items);
+
+    this.setState({items:[...this.state.items,1]})
+    console.log(this.state.items);
     if (type === "container") {
 
     }
   }
 
   render() {
+    console.log('initing workscreen');
+    console.log(this.props);
+
     if (!this.props.auth.uid) {
       return <Redirect to="/login" />;
     }
@@ -103,7 +131,10 @@ class WorkScreen extends Component {
     let work = this.props.work;
     if (this.props.work == null) {
       work = this.state; // new work
+    }else{
     }
+    // work = this.state; // new work
+
 
     return (
       <div className='row'>
@@ -113,7 +144,9 @@ class WorkScreen extends Component {
           handleGoHome={this.handleGoHome}
           state={this.state}
           handleZoomIn={this.handleZoomIn}
-          handleZoomOut={this.handleZoomOut} />
+          handleZoomOut={this.handleZoomOut}
+          handleAddItem={this.handleAddItem}
+           />
         <DisplayPlace work={work} state={this.state} tempHeight={this.state.height} tempWidth={this.state.width}/>
         <ToolMapRight work={work} state={this.state} updateDim={this.updateDim} />
       </div>

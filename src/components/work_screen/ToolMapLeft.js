@@ -8,6 +8,8 @@ import { compose } from 'redux';
 
 class ToolMapLeft extends Component {
 
+    
+
     state = {
         name: null,
         owner: null,
@@ -46,6 +48,14 @@ class ToolMapLeft extends Component {
         this.handleModalClose(type);
     }
 
+
+    formBox = (e)=>{
+        console.log(e)
+        console.log('forming box')
+
+
+        this.props.handleAddItem(e)
+    }
 
     handleInitState = () => {
         if (this.state.name === null && this.props.work.name)
@@ -104,7 +114,7 @@ class ToolMapLeft extends Component {
                         <Button waves="orange" id="dialog_yes_button" className='btn' onClick={this.handleSaveWork.bind(this, "save")}>Yes</Button>
                         <Button waves="yellow" id="dialog_no_button" className='btn' onClick={this.handleModalClose.bind(this, "save")}>No</Button>
                         <footer className="dialog_footer">
-                            The list will not be retreivable.
+                           test msg...
                     </footer>
                     </Modal>
                     <Modal
@@ -134,7 +144,7 @@ class ToolMapLeft extends Component {
                         <Button waves="orange" id="dialog_yes_button" className='btn' onClick={this.handleSaveWork.bind(this, "cancel")}>Yes</Button>
                         <Button waves="yellow" id="dialog_no_button" className='btn' onClick={this.handleModalClose.bind(this, "cancel")}>No</Button>
                         <footer className="dialog_footer">
-                            The list will not be retreivable.
+                        test msg...
                     </footer>
                     </Modal>
                 </div>
@@ -146,8 +156,8 @@ class ToolMapLeft extends Component {
                             onChange={this.handleChange} />
                     </div>
                     <div className="work-card" style={{ marginTop: '20%' }}>
-                        <div className="work-container"></div>
-                        <label className="work-property-label">container</label>
+                        <div className="work-container" onClick={this.formBox.bind(this,'container')}></div>
+                        <label className="work-property-label" >container</label>
                     </div>
                     <div className="work-card">
                         <p style={{ cursor: "pointer" }}>prompt for input:</p>
