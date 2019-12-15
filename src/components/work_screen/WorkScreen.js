@@ -114,7 +114,11 @@ class WorkScreen extends Component {
   handleWorkUnmodified = () => {
     this.setState({ saved: true, edited: false });
   }
-
+  // handleKeyPress = (event) => {
+  //   if(event.key === 'Enter'){
+  //     console.log('enter press here! ')
+  //   }
+  // }
   createNewItem = (type) => {
     this.handleWorkModified();
     type = type.toUpperCase()
@@ -142,9 +146,15 @@ class WorkScreen extends Component {
   }
 
   handleKeyEvent = (e) => {
+    e.preventDefault();
+    console.log(e.key);
+    console.log(this.state.selected);
     if (e.key === "d" && e.ctrlKey && this.state.selected) {
+console.log('dup');
       this.handleDuplicate();
-    } else if (e.key === "Delete" && this.state.selected) {
+    } else if ((e.key == "Delete"||e.keycode==8) && this.state.selected) {
+      console.log('deleting');
+
       this.handleDelete();
     }
   }
@@ -188,7 +198,7 @@ class WorkScreen extends Component {
     }
 
     return (
-      <div className='row' >
+      <div className='row' onKeyPress={this.handleKeyPress} >
         <ToolMapLeft
           handleModalOpen={this.handleModalOpen}
           handleModalClose={this.handleModalClose}
