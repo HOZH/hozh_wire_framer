@@ -26,10 +26,12 @@ class ToolMapLeft extends Component {
     }
 
     handleModalClose = (type) => {
+
         if (type === "save")
             this.setState({ modalActive1: false });
         else if (type === "cancel")
             this.setState({ modalActive2: false });
+
     }
 
     handleChange = (e) => {
@@ -55,6 +57,15 @@ class ToolMapLeft extends Component {
 
 
         this.props.handleAddItem(e)
+    }
+
+    goBack =()=>{
+
+        console.log(this)
+
+        console.log(this.props)
+
+        // this.props.history.push('/')
     }
 
     handleInitState = () => {
@@ -85,7 +96,10 @@ class ToolMapLeft extends Component {
                         className="work-top-button"
                         style={{ marginLeft: "55%" }}
                         icon={<Icon>cancel</Icon>}
-                        onClick={this.handleModalOpen.bind(this, "cancel")}>
+                        // onClick={this.handleModalOpen.bind(this, "cancel")}
+                        onClick={this.goBack}
+
+                        >
                     </Button>
                     <Modal
                         bottomSheet={false}

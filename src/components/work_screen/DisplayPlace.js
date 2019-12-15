@@ -8,29 +8,7 @@ import Item from './Item'
 
 
 class DisplayPlace extends Component {
-    // constructor() {
 
-
-    
-  
-    //     super()
-    
-    //     this.state = {
-    //       id: null,
-    //       top:,
-    //       left:,
-    //       height:,
-    //       width:,  
-        
-    //     }
-    //   }
-    
-
-    // componentDidMount(){
-    //     // this.setState({temp:2})
-    //     console.log(12234,this.state,this.props);
-    //   }
-    
 
     render() {
         console.log("initing displayPlace");
@@ -83,14 +61,14 @@ class DisplayPlace extends Component {
                                         {this.props.tempHeight}
                                         <br></br>
                                         {this.props.tempWidth} 
-                                        {this.props.work.items.map((current)=>{
+                                        {/* {this.props.work.items.map((current)=>{
                                             console.log("current",current);
                                             return (
                                                 
                                                 <Item item={current}></Item>
 
                                             )
-                                        })}
+                                        })} */}
 
  {/* <Item></Item> */}
                                         {/* <Drag></Drag> */}
