@@ -64,7 +64,7 @@ class ToolMapRight extends Component {
                     <div className="work-property-label" style={{ height: "40%", marginTop: "10px" }}>Frame Height: </div>
                     <TextInput type="number" className="work-input update-frame-input" id="screenHeight" value={this.state.screenHeight} onChange={this.handleChange} />
                 </div>
-                <div className="tool-map row" style={{ height: "80%" }}>
+                <div className="tool-map row" style={{ height: "90%" }}>
                     <div className="work-properties" style={{ height: "15%" }}>
                         <div className="work-property-label" style={{ marginTop: "5%" }}>Property</div>
                         <TextInput className="work-input" className="work-input" id="property" value={selected ? selected.property : ""} onChange={this.handleSelectedChange} />

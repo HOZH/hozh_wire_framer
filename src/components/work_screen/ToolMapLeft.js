@@ -34,7 +34,7 @@ class ToolMapLeft extends Component {
                         waves="teal"
                         node="button"
                         className="work-top-button"
-                        style={{ marginLeft: "75%", marginTop: "-25%", width: "25%" }}
+                        style={{ marginLeft: "75%", marginTop: "-13%", width: "25%" }}
                         icon={<Icon>cancel</Icon>}
                         onClick={this.props.handleModalOpen.bind(this, "cancel")}>
                     </Button>
@@ -98,7 +98,7 @@ test msg...                    </footer>
                     </Modal>
                 </div>
 
-                <div className="tool-map row" style={{ height: "93.5%" }}>
+                <div className="tool-map row" style={{ height: "103.5%" }}>
                     <div className="work-name-input">
                         <div className="work-property-label">Work Name</div>
                         <TextInput placeholder="Insert here" className="work-input" id='name' value={this.props.state.work ? this.props.state.work.name : ""}

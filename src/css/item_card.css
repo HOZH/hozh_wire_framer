@@ -85,7 +85,7 @@ cursor: pointer;
   border-color: black;
   border-width: 2px;
   border-style: solid;
-  background-color: white;
+  background-color: aqua;
   height: 60px;
 }
 .work-button {
@@ -161,7 +161,7 @@ cursor: pointer;
   border-color: black;
   border-width: 2px;
   border-style: solid;
-  background-color: white;
+  background-color: rgb(128, 80, 80);
   margin-top: 10px;
   margin-bottom: 10px;
 }

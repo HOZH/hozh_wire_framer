@@ -21,19 +21,19 @@ class DisplayPlace extends Component {
                     wheel={false}
                 >
                     {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-                        <React.Fragment>
+                        <React.Fragment >
                             <div className="zoom-tool">
                                 <Button small
                                     waves="red"
                                     node="button"
-                                    className="col s3 work-top-button"
+                                    className="col s3 work-top-button bt1"
                                     icon={<Icon>zoom_in</Icon>}
                                     onClick={zoomIn}>
                                 </Button>
                                 <Button small
                                     waves="red"
                                     node="button"
-                                    className="col s3 work-top-button"
+                                    className="col s3 work-top-button bt2"
 
                                     icon={<Icon>zoom_out</Icon>}
                                     onClick={zoomOut}>
