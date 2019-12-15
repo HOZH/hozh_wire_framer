@@ -10,13 +10,17 @@ class Navbar extends React.Component {
 
   render() {
     const { auth, profile } = this.props;
-    const links = auth.uid ? <LoggedInLinks profile={profile} /> : <LoggedOutLinks />;
+    const links = auth.uid ? <LoggedInLinks profile={profile}  auth={auth}/> : <LoggedOutLinks />;
+    const databaseTester = auth.uid&&profile.type=="admin" ? (<Link to="/admin" className="tester">databseTester</Link>):"";
+
+    console.log('123',profile)
 
     return (
       <nav className="nav-wrapper grey darken-3">
         <div className="container">
-          <Link to="/" className="brand-logo" >Wireframer!</Link>
-          <Link to="/databaseTester" className="tester">databseTester</Link>
+          <Link to={"/"+auth.uid+""} className="brand-logo" >Wireframer!</Link>
+          {/* <Link to="/admin" className="tester">databseTester</Link> */}
+          {databaseTester}
           {links}
         </div>
       </nav>

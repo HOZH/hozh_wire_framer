@@ -25,10 +25,10 @@ class App extends Component {
             <Navbar />
             <Switch>
               <Route exact path="/" component={HomeScreen} />
-              <Route path="/databaseTester" component={DatabaseTester} />
+              <Route path="/admin" component={DatabaseTester} />
               <Route path="/register" component={RegisterScreen} />
               <Route path="/login" component={LoginScreen} />
-              <Route path="/work/:id" component={WorkScreen} />
+              <Route path="/:any/work/:id" component={WorkScreen} />
               <Route path="/:any" component={HomeScreen} />
             </Switch>
 

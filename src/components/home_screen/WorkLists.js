@@ -10,6 +10,9 @@ import WorkCard from './WorkCard';
 
 class WorkLists extends Component {
 
+
+
+
     updateTimeStamp = (id) => {
         let fireStore = getFirestore();
         fireStore.collection("workLists").doc(id).update({
@@ -18,6 +21,8 @@ class WorkLists extends Component {
     }
 
     render() {
+        console.log('worklist', this.props);
+
         let workLists = this.props.workLists;
 
         return (
@@ -26,7 +31,7 @@ class WorkLists extends Component {
 
                 {
                     workLists && workLists.map(work => (
-                        <Link to={'/work/' + work.id} key={work.id} onClick={this.updateTimeStamp.bind(this, work.id)}>
+                        <Link to={'/'+ this.props.auth.uid+'/work/' + work.id} key={work.id} onClick={this.updateTimeStamp.bind(this, work.id)}>
                             <WorkCard work={work} />
                         </Link>
                     ))

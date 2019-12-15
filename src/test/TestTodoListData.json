@@ -3,69 +3,40 @@
 		{
 			"id": "1",
 			"owner": "Z0uRpMjUl0QypwNKGNxCkUMYADi1",
-			"name": "My first Workw",
-			"screenHeight": "100",
-			"screenWidth": "200",
+			"name": "temp frame",
+			"screenHeight": "500",
+			"screenWidth": "500",
 			"items": [
-				{
-					
-					"backGroundColor":"auqa",
-					"borderColor":"pink",
-					"borderRadius":"1",
-					"borderWidth":"1",
-					"fontSize":"8",
-					"height": 30,
-					"id":"c345d01c-86fb-4c54-a5e4-035dd386d59e",
-					"left":86,
-					"property": "hong's button",
-					"select":false,
-					"top":79,
-					"type":"BUTTON",
-					"width":60
-
-				},
-				{
-					"backGroundColor": "auqa",
-					"borderColor": "pink",
+				{"backGroundColor": "white",
+				"borderColor": "black",
+				"borderRadius": "1",
+				"borderWidth": "1",
+				"fontSize": "7",
+				"height": 170,
+				"id": "0b3b1a8f-38a6-44e0-97a1-70c946566b7a",
+				"left": 45,
+				"property": "Container",
+				"selected": false,
+				"top": 144,
+				"type": "CONTAINER",
+				"width": 100}
+				,
+				{"backGroundColor": "aqua",
+					"borderColor": "black",
 					"borderRadius": "1",
 					"borderWidth": "1",
-					"fontSize": "8",
-					"height": 80,
-					"id": "c345d01c-86fb-4c54-a5e4-035dd386d59e",
-					"left": 186,
-					"property": "11111c",
-					"select": false,
-					"top": 179,
+					"fontSize": "15",
+					"height": 150,
+					"id": "0b3b1a8f-38a6-44e0-97a1-70c946566b7a",
+					"left": 45,
+					"property": "sec",
+					"selected": false,
+					"top": 144,
 					"type": "CONTAINER",
-					"width": 90
-				}
-			]
-		},
-		{
-			"id": "2",
-			"owner": "Z0uRpMjUl0QypwNKGNxCkUMYADi1",
-			"name": "My Last Work",
-			"screenHeight": "1200",
-			"screenWidth": "2030",
-			"items": [
-				{
-					
-						"backGroundColor": "auqa",
-						"borderColor": "pink",
-						"borderRadius": "1",
-						"borderWidth": "1",
-						"fontSize": "8",
-						"height": 80,
-						"id": "c345d01c-86fb-4c54-a5e4-035dd386d59e",
-						"left": 186,
-						"property": "11111c",
-						"select": false,
-						"top": 179,
-						"type": "CONTAINER",
-						"width": 90
-					
-				}
+					"width": 100}
+				
 			]
 		}
+	
 	]
 }
