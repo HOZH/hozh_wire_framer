@@ -9,9 +9,9 @@ export default class Drag extends Component {
         this.state = {
             width: 100,
             height: 100,
-            top: 100,
-            left: 100,
-            rotateAngle: 0
+            top: 0,
+            left: 0,
+            // rotateAngle: 0
         }
     }
 
@@ -29,13 +29,14 @@ export default class Drag extends Component {
             width,
             height
         })
+        
     }
 
-    handleRotate = (rotateAngle) => {
-        this.setState({
-            rotateAngle
-        })
-    }
+    // handleRotate = (rotateAngle) => {
+    //     this.setState({
+    //         rotateAngle
+    //     })
+    // }
 
     handleDrag = (deltaX, deltaY) => {
         this.setState({
@@ -55,14 +56,16 @@ export default class Drag extends Component {
                     top={top}
                     width={width}
                     height={height}
-                    rotateAngle={rotateAngle}
+                    // rotateAngle={rotateAngle}
                     // aspectRatio={false}
                     // minWidth={10}
                     // minHeight={10}
-                    zoomable='n, w, s, e, nw, ne, se, sw'
+                    // zoomable='n, w, s, e, nw, ne, se, sw'
+                    zoomable='nw, ne, se, sw'
+
                     // rotatable={true}
                     // onRotateStart={this.handleRotateStart}
-                    onRotate={this.handleRotate}
+                    // onRotate={this.handleRotate}
                     // onRotateEnd={this.handleRotateEnd}
                     // onResizeStart={this.handleResizeStart}
                     onResize={this.handleResize}
@@ -72,6 +75,9 @@ export default class Drag extends Component {
                     // onDragEnd={this.handleDragEnd}
                     className="drag"
                 >
+                  {/* <div>
+                      <p>123</p>
+                  </div> */}
                 </ResizableRect>
             </div>
         )

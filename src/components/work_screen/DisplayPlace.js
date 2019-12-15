@@ -4,6 +4,7 @@ import { Icon, Button, Modal, TextInput } from 'react-materialize';
 
 
 import Drag from './Drag'
+import Item from './Item'
 
 
 
@@ -47,7 +48,7 @@ class DisplayPlace extends Component {
                             </div>
                             <TransformComponent style={{width:"100%"}}>
                                 <div style={{ height: "100%", width: "100%" }}>
-                                    <div className="display-board center" style={{
+                                    <div className="display-board center middleCard" style={{
                                         border: "1px black solid",
 
                                         backgroundColor:"white",
@@ -62,7 +63,8 @@ class DisplayPlace extends Component {
                                         <br></br>
                                         {this.props.tempWidth} 
 
-                                        <Drag></Drag>
+<Item></Item>
+                                        {/* <Drag></Drag> */}
                                     </div>
                                 </div>
                             </TransformComponent>
