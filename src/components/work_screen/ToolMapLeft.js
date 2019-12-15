@@ -64,8 +64,7 @@ class ToolMapLeft extends Component {
                         <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "save")}>Yes</Button>
                         <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "save")}>No</Button>
                         <footer className="dialog_footer">
-                            The list will not be retreivable.
-                    </footer>
+                        test msg...                    </footer>
                     </Modal>
                     <Modal
                         bottomSheet={false}
@@ -95,8 +94,7 @@ class ToolMapLeft extends Component {
                         <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "cancel")}>No</Button>
                         <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "cancel-save")}>Save and Quit</Button>
                         <footer className="dialog_footer">
-                            The will not be retreivable.
-                    </footer>
+test msg...                    </footer>
                     </Modal>
                 </div>
 

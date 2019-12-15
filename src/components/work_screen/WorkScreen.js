@@ -31,6 +31,7 @@ class WorkScreen extends Component {
     modalActive1: false,
     modalActive2: false,
     selected: null,
+    newWork:false
   }
 
   handleSelect = (item, e) => {
@@ -60,11 +61,22 @@ class WorkScreen extends Component {
 
       // eslint-disable-next-line
       this.state.work.timestamp = fireStore.FieldValue.serverTimestamp();
+      console.log("fire sotre",fireStore.get({collection:"workLists"}))
+      fireStore.get({collection:"workLists",doc:this.props.match.params.id}).then(e=>{   
 
-      if (this.props.match.params.id === 'new')
-        fireStore.collection('workLists').add(this.state.work)
-      else
-        fireStore.collection('workLists').doc(this.props.match.params.id).update(this.state.work)
+
+        if(e.exists){
+          fireStore.collection('workLists').doc(this.props.match.params.id).update(this.state.work)
+        }
+        else{
+          fireStore.collection('workLists').add(this.state.work)
+
+        }
+      })
+      // if (this.props.match.params.id === 'new')
+      //   fireStore.collection('workLists').add(this.state.work)
+      // else
+      //   fireStore.collection('workLists').doc(this.props.match.params.id).update(this.state.work)
 
       if (type === "cancel-save")
         this.handleGoHome();

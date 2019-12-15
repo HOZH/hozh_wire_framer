@@ -2,53 +2,12 @@
 	"workLists": [
 		{
 			"id": "1",
-			"owner": "KnZu0AacFPU6Yo05T6VSEhjAD0y1",
+			"owner": "Z0uRpMjUl0QypwNKGNxCkUMYADi1",
 			"name": "My first Workw",
 			"screenHeight": "100",
 			"screenWidth": "200",
 			"items": [
 				{
-					"id": "32",
-					"left": "33.333",
-					"top": 22.2,
-					"type": "Button",
-					"property": "submit",
-					"backGroundColor": "#c17de8",
-					"borderWidth": 1,
-					"borderRadius": 1,
-					"borderColor": "#c17de8",
-					"fontSize": 11,
-					"width": 200,
-					"height": 300
-				},
-				{
-					"id": "3333",
-					"left": 323.333,
-					"top": 212.2,
-					"type": "Container",
-					"property": "submit",
-					"backGroundColor": "#c17de8",
-					"borderColor": "#c17de8",
-					"borderWidth": 1,
-					"borderRadius": 1,
-					"fontSize": 11,
-					"width": 200,
-					"height": 310
-				},
-				{
-					"id": "1111",
-					"left": 23,
-					"top": 34,
-					"type": "Textfiled",
-					"property": "submit",
-					"backGroundColor": "#c17de8",
-					"borderColor": "#c17de8",
-					"borderWidth": 1,
-					"borderRadius": 1,
-					"fontSize": 11,
-					"width": 15,
-					"height": 21
-				},{
 					
 					"backGroundColor":"auqa",
 					"borderColor":"pink",
@@ -84,24 +43,27 @@
 		},
 		{
 			"id": "2",
-			"owner": "KnZu0AacFPU6Yo05T6VSEhjAD0y1",
+			"owner": "Z0uRpMjUl0QypwNKGNxCkUMYADi1",
 			"name": "My Last Work",
 			"screenHeight": "1200",
 			"screenWidth": "2030",
 			"items": [
 				{
-					"id": "32",
-					"left": 33.333,
-					"top": 22.2,
-					"type": "Button",
-					"property": "submit",
-					"backGroundColor": "#c17de8",
-					"borderColor": "#c17de8",
-					"borderWidth": 1,
-					"borderRadius": 1,
-					"fontSize": 11,
-					"width": 200,
-					"height": 300
+					
+						"backGroundColor": "auqa",
+						"borderColor": "pink",
+						"borderRadius": "1",
+						"borderWidth": "1",
+						"fontSize": "8",
+						"height": 80,
+						"id": "c345d01c-86fb-4c54-a5e4-035dd386d59e",
+						"left": 186,
+						"property": "11111c",
+						"select": false,
+						"top": 179,
+						"type": "CONTAINER",
+						"width": 90
+					
 				}
 			]
 		}
