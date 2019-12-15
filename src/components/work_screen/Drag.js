@@ -43,7 +43,7 @@ export default class Drag extends Component {
             "borderRadius":borderRadius+"px",
             "borderColor":borderColor+"",
             "borderWidth":borderWidth+"",
-            "fontSize":fontSize+"",
+            "fontSize":fontSize+"px",
             "backgroundColor":backgroundColor+"",
             // borderStyle:"solid"
 

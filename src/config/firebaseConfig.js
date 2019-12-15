@@ -2,17 +2,6 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 
-// THIS IS USED TO INITIALIZE THE firebase OBJECT
-// PUT YOUR FIREBASE PROJECT CONFIG STUFF HERE
-// const firebaseConfig = {
-//   apiKey: "AIzaSyBP-pCijY5txVIDv0hZIpA6aYoOZK35qxY",
-//   authDomain: "wireframer-e5e85.firebaseapp.com",
-//   databaseURL: "https://wireframer-e5e85.firebaseio.com",
-//   projectId: "wireframer-e5e85",
-//   storageBucket: "wireframer-e5e85.appspot.com",
-//   messagingSenderId: "977237593197",
-//   appId: "1:977237593197:web:5c75f254d1400b01748364"
-// };
 
 const firebaseConfig = {
   apiKey: "AIzaSyCENiYkOKcGwiCoU4Ecb1mCk7jhk164PHo",
@@ -26,5 +15,4 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-// NOW THE firebase OBJECT CAN BE CONNECTED TO THE STORE
 export default firebase;
