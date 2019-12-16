@@ -156,7 +156,7 @@ class WorkScreen extends Component {
 
 console.log('dup');
       this.dupControl();
-    } else if ((event.key == "Delete"||event.keycode==8) && this.state.selected) {
+    } else if ((event.key == "Delete" || event.keycode == 8 || event.key=="Backspace") && this.state.selected) {
       console.log('deleting');
 
       this.deleteControl();

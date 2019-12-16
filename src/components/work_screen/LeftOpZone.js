@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 
 
+const tmpStyle = {}
 
 class LeftOpZone extends Component {
 
@@ -23,22 +24,28 @@ class LeftOpZone extends Component {
         return (
             <div className="col s3 total-toolmap" >
                 <div className="tool-map row" style={{ height: "6.5%" }}>
-                    <Button small
-                        waves="purple"
+
+                    <Button
+                        small
                         node="button"
                         className="work-top-button"
+                        // waves="purple"
+
                         style={{ width: "25%" }}
                         icon={<Icon>save</Icon>}
                         onClick={this.props.handleModalOpen.bind(this, "save")}>
                     </Button>
+
                     <Button small
-                        waves="teal"
                         node="button"
+                        // waves="teal"
+
                         className="work-top-button"
                         style={{ marginLeft: "75%", marginTop: "-13%", width: "25%" }}
                         icon={<Icon>cancel</Icon>}
                         onClick={this.props.handleModalOpen.bind(this, "cancel")}>
                     </Button>
+
                     <Modal
                         bottomSheet={false}
                         fixedFooter={false}
@@ -59,10 +66,17 @@ class LeftOpZone extends Component {
                             startingTop: '4%'
                         }}
                     >
+
+
                         <section className="dialog_content">
-                            <p><strong>Are you sure you want to save this work?</strong></p>
+                            <p><b>Do you want to save this frame?</b></p>
                         </section>
-                        <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "save")}>Yes</Button>
+                        <Button
+                            waves="orange"
+                            id="dialog_yes_button"
+                            className='btn modal-button'
+                            onClick={this.props.handleSaveWork.bind(this, "save")}
+                        >Yes</Button>
                         <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "save")}>No</Button>
                         <footer className="dialog_footer">
                             this action cannot be undo                   </footer>
@@ -91,36 +105,72 @@ class LeftOpZone extends Component {
                         <section className="dialog_content">
                             <p><b>Are you willing to close this work</b></p>
                             {/* <p><b>this action cannot be undo</b></p> */}
+
+
+                            {/* <p><b>this action cannot be undo</b></p> */}
                         </section>
-                        <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "cancel")}>Yes</Button>
-                        <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "cancel")}>No</Button>
-                        <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "cancel-save")}>Save and Quit</Button>
+                        <Button
+                            // waves="orange"
+                            id="dialog_yes_button"
+                            className='btn modal-button'
+                            onClick={this.props.handleSaveWork.bind(this, "cancel")}>Yes</Button>
+                        <Button
+                            // waves="yellow"
+                            id="dialog_no_button"
+                            className='btn modal-button'
+                            onClick={this.props.handleModalClose.bind(this, "cancel")}>No</Button>
+                        <Button
+                            //  waves="orange"
+                            id="dialog_yes_button"
+                            className='btn modal-button'
+                            onClick={this.props.handleSaveWork.bind(this, "cancel-save")}>Save and Quit</Button>
                         <footer className="dialog_footer">
                             this action cannot be undo                </footer>
                     </Modal>
                 </div>
 
-                <div className="tool-map row" style={{ height: "103.5%" }}>
-                    <div className="work-name-input">
-                        <div className="work-property-label">Work Name</div>
-                        <TextInput placeholder="Insert here" className="work-input" id='name' value={this.props.state.work ? this.props.state.work.name : ""}
+                <div className="tool-map row"
+                    style={{ tmpStyle, height: "103.5%" }}>
+                    <div
+                        className="work-name-input">
+                        <div
+                            className="work-property-label">Work Name</div>
+                        <TextInput
+                            placeholder="Insert here"
+                            className="work-input"
+                            id='name'
+                            value={this.props.state.work ? this.props.state.work.name : ""}
                             onChange={this.handleChange} />
                     </div>
-                    <div className="work-card" style={{ marginTop: '20%' }}>
-                        <div className="work-container" onClick={this.props.handleAddItem.bind(this, "Container")}></div>
-                        <label className="work-property-label">container</label>
+                    <div
+                        className="work-card" style={{ tmpStyle, marginTop: '20%' }}>
+                        <div
+                            className="work-container" onClick={this.props.handleAddItem.bind(this, "Container")}></div>
+                        <label
+                            className="work-property-label">container</label>
                     </div>
-                    <div className="work-card">
-                        <p style={{ cursor: "pointer" }} onClick={this.props.handleAddItem.bind(this, "Label")}>prompt for input:</p>
-                        <p className="work-property-label" style={{ marginLeft: "10%" }}>label</p>
+                    <div
+                        className="work-card">
+                        <p
+                            style={{ cursor: "pointer" }}
+                            onClick={this.props.handleAddItem.bind(this, "Label")}
+                        >prompt for input:</p>
+                        <p
+                            className="work-property-label" style={{ tmpStyle, marginLeft: "10%" }}>label</p>
                     </div>
-                    <div className="work-card">
-                        <div className="work-button" onClick={this.props.handleAddItem.bind(this, "Button")}>submit</div>
-                        <label className="work-property-label">button</label>
+                    <div
+                        className="work-card">
+                        <div
+                            className="work-button" onClick={this.props.handleAddItem.bind(this, "Button")}>submit</div>
+                        <label
+                            className="work-property-label">button</label>
                     </div>
-                    <div className="work-card">
-                        <div className="work-textfield" onClick={this.props.handleAddItem.bind(this, "Input")}>input</div>
-                        <label className="work-property-label">textfield</label>
+                    <div
+                        className="work-card">
+                        <div
+                            className="work-textfield" onClick={this.props.handleAddItem.bind(this, "Input")}>input</div>
+                        <label
+                            className="work-property-label">textfield</label>
                     </div>
                 </div>
 
