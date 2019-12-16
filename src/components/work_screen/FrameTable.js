@@ -13,7 +13,7 @@ export default class FrameTable extends Component {
         console.log(this.props.state)
         const items = this.props.state.work.items;
         return (
-            <div className="col s6 display-place total-toolmap" >
+            <div className="col s6 display-place total-toolmap" id="middle">
                 <TransformWrapper
                     defaultScale={1}
                     defaultPositionX={200}

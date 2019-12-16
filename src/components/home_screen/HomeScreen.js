@@ -10,7 +10,8 @@ import v1 from 'uuid'
 
 class HomeScreen extends Component {
     handleNewList = () => {
-        this.props.history.push('/work/' + v1());
+        console.log(12,this.props)
+        this.props.history.push('/'+this.props.auth.uid+'/work/' + v1());
     }
 
     render() {

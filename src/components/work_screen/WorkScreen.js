@@ -5,6 +5,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import { getFirestore } from 'redux-firestore';
 import v4 from 'uuid'
+import ReactDOM from 'react-dom';
+
 
 
 
@@ -14,6 +16,16 @@ import FrameTable from './FrameTable';
 import CONSTANT from '../Constant';
 
 class WorkScreen extends Component {
+
+  // componentDidMount(){
+
+  //   ReactDOM.findDOMNode(FrameTable).addEventListener('keydown', this.handleKeyOp);
+  //   console.log(document.getElementById("middle"),233)
+  //   // document.body.addEventListener('keydown', this.handleKeyOp);
+
+  //   // document.getElementById("middle").addEventListener('keydown', this.handleKeyOp);
+
+  // }
 
   state = {
     work: {
@@ -156,7 +168,7 @@ class WorkScreen extends Component {
 
 console.log('dup');
       this.dupControl();
-    } else if ((event.key == "Delete" || event.keycode == 8 || event.key=="Backspace") && this.state.selected) {
+    } else if ((event.key == "Delete" || event.keycode == 8) && this.state.selected) {
       console.log('deleting');
 
       this.deleteControl();

@@ -3,12 +3,12 @@
 const Constant = {
     DISPLAY: {
      
-        MIN_WIDTH: 50,
-        MIN_HEIGHT: 50,
-        MAX_WIDTH: 3000,
-        MAX_HEIGHT: 3000,
-        INIT_WIDTH: 500,
-        INIT_HEIGHT: 500,
+        MIN_WIDTH: 1,
+        MIN_HEIGHT: 1,
+        MAX_WIDTH: 5000,
+        MAX_HEIGHT: 5000,
+        INIT_WIDTH: 800,
+        INIT_HEIGHT: 800,
     },
     CONTAINER: {
         
