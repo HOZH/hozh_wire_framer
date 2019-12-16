@@ -12,7 +12,7 @@ class LoginScreen extends Component {
     password: '',
   }
 
-  handleChange = (e) => {
+  doChange = (e) => {
     const { target } = e;
 
     this.setState(state => ({
@@ -21,14 +21,12 @@ class LoginScreen extends Component {
     }));
   }
 
-  handleSubmit = (e) => {
+  doSubmit = (e) => {
     e.preventDefault();
 
-    // As we use react-redux-firebas-v3 we need to pass firebase object to
-    // authActions to be authorized by using firebse.auth method
-    const { props, state } = this;
-    const { firebase } = props;
-    const credentials = { ...state };
+    let { props, state } = this;
+    let { firebase } = props;
+    let credentials = { ...state };
     const authData = {
       firebase,
       credentials,
@@ -38,23 +36,23 @@ class LoginScreen extends Component {
   }
 
   render() {
-    const { auth, authError } = this.props;
+    let { auth, authError } = this.props;
     if (auth.uid) {
-      return <Redirect to="/" />;
+      return <Redirect to={"/"+auth.uid+"" }/>;
     }
 
     return (
       <div className="container">
         <div className="row">
-          <form onSubmit={this.handleSubmit} className="col s4 white">
+          <form onSubmit={this.doSubmit} className="col s4 white">
             <h5 className="grey-text text-darken-3">Login</h5>
             <div className="input-field">
               <label htmlFor="email">Email</label>
-              <input className="active" type="email" name="email" id="email" onChange={this.handleChange} />
+              <input className="active" type="email" name="email" id="email" onChange={this.doChange} />
             </div>
             <div className="input-field">
               <label htmlFor="password">Password</label>
-              <input className="active" type="password" name="password" id="password" onChange={this.handleChange} />
+              <input className="active" type="password" name="password" id="password" onChange={this.doChange} />
             </div>
             <div className="input-field">
               <button type="submit" className="btn pink lighten-1 z-depth-0">Login</button>
@@ -71,11 +69,12 @@ class LoginScreen extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  console.log(state)
+const mapStateToProps = sub_state => {
+  console.log(sub_state)
+  
   return {
-    authError: state.auth.authError,
-    auth: state.firebase.auth,
+    authError: sub_state.auth.authError,
+    auth: sub_state.firebase.auth,
   }
 };
 

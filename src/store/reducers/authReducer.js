@@ -1,9 +1,5 @@
 import * as actionCreators from '../actions/actionCreators'
 
-// REDUCERS ARE CALLED WHEN AN ACTION IS DISPATCHED,
-// THEIR JOB IS TO ADVANCE THE STATE. THEY WILL UPDATE
-// AND RETURN THE NEW, UPDATED STATE
-
 const initState = {};
 
 const authReducer = (state = initState, action) => {

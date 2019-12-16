@@ -64,6 +64,7 @@ class WorkCard extends React.Component {
                     
                     options={{
                         dismissible: false,
+                        outDuration: 250,
                         endingTop: '10%',
                         inDuration: 250,
                         onCloseEnd: null,
@@ -71,7 +72,6 @@ class WorkCard extends React.Component {
                         onOpenEnd: null,
                         onOpenStart: null,
                         opacity: 0.5,
-                        outDuration: 250,
                         preventScrolling: false,
                         startingTop: '4%'
                     }}
@@ -82,7 +82,7 @@ class WorkCard extends React.Component {
                             <Button waves="orange" id="dialog_yes_button" className='btn' onClick={this.deleteList}>Yes</Button>
                             <Button waves="orange" id="dialog_no_button" className='btn' onClick={this.handleModalClose}>No</Button>
                         <footer className="dialog_footer">
-                            The list will not be retreivable.
+                            The action cannot be redo.
                         </footer>
                     </Modal>
                 </div>

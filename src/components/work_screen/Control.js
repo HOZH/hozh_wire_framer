@@ -4,7 +4,7 @@ import Drag from './Drag'
 
 
 
-class Item extends Component {
+export default class Item extends Component {
 
     render() {
         const item = this.props.item;
@@ -21,4 +21,3 @@ class Item extends Component {
     }
 }
 
-export default Item;

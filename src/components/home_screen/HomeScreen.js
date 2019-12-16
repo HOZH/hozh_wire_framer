@@ -30,7 +30,7 @@ class HomeScreen extends Component {
 
                         <div className="home_new_list_container row center">
                             <button className="home_new_list_button " onClick={this.handleNewList}>
-                                Create a New Wireframe
+                                Create a Wireframe
                                 </button>
                         </div>
                     </div>

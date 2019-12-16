@@ -4,20 +4,20 @@ import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { Redirect } from 'react-router-dom';
 import { getFirestore } from 'redux-firestore';
-import v1 from 'uuid'
+import v4 from 'uuid'
 
 
 
-import ToolMapLeft from './ToolMapLeft';
-import ToolMapRight from './ToolMapRight';
-import DisplayPlace from './DisplayPlace';
+import LeftOpZone from './LeftOpZone';
+import RightOpZone from './RightOpZone';
+import FrameTable from './FrameTable';
 import CONSTANT from '../Constant';
 
 class WorkScreen extends Component {
 
   state = {
     work: {
-      "id": v1(),
+      "id": v4(),
       "owner": this.props.auth.uid,
       "name": "",
       "screenHeight": CONSTANT.DISPLAY.INIT_HEIGHT,
@@ -34,8 +34,8 @@ class WorkScreen extends Component {
     newWork:false
   }
 
-  handleSelect = (item, e) => {
-    e.stopPropagation();
+  handleSelect = (item, event) => {
+    event.stopPropagation();
     this.handleUnselect();
     item.selected = true;
     this.setState({ selected: item })
@@ -51,15 +51,14 @@ class WorkScreen extends Component {
 
   handleSaveWork = (type) => {
     this.handleUnselect();
-    this.handleModalClose(type);
+    this.closeModal(type);
     this.handleWorkUnmodified();
     if (type === "cancel") {
       this.handleGoHome();
     }
     else {
-      let fireStore = getFirestore();
+      const fireStore = getFirestore();
 
-      // eslint-disable-next-line
       this.state.work.timestamp = fireStore.FieldValue.serverTimestamp();
       console.log("fire sotre",fireStore.get({collection:"workLists"}))
       fireStore.get({collection:"workLists",doc:this.props.match.params.id}).then(e=>{   
@@ -72,6 +71,8 @@ class WorkScreen extends Component {
           fireStore.collection('workLists').add(this.state.work)
 
         }
+      }).catch(err=>{
+        console.log(err)
       })
       // if (this.props.match.params.id === 'new')
       //   fireStore.collection('workLists').add(this.state.work)
@@ -88,23 +89,23 @@ class WorkScreen extends Component {
     this.props.history.push("/")
   }
 
-  handleModalOpen = (type) => {
+  openModal = (op) => {
 
-    if (type === "save")
+    if (op === "save")
       this.setState({ modalActive1: true });
-    else if (type === "cancel" && !(this.state.saved && !this.state.edited))
+    else if (op === "cancel" && !(this.state.saved && !this.state.edited))
       this.setState({ modalActive2: true });
-    else if (type === "cancel" && (this.state.saved && !this.state.edited))
+    else if (op == "cancel" && (this.state.saved && !this.state.edited))
       this.handleGoHome();
   }
 
-  handleModalClose = (type) => {
-    console.log(type)
-    if (type === "save")
+  closeModal = (op) => {
+    console.log(op)
+    if (op === "save")
       this.setState({ modalActive1: false });
-    else if (type === "cancel")
+    else if (op === "cancel")
       this.setState({ modalActive2: false });
-    else if (type === "cancel-save")
+    else if (op === "cancel-save")
       this.setState({ modalActive2: false });
   }
 
@@ -119,59 +120,59 @@ class WorkScreen extends Component {
   //     console.log('enter press here! ')
   //   }
   // }
-  createNewItem = (type) => {
+  createNewControl = (type) => {
     this.handleWorkModified();
     type = type.toUpperCase()
     return {
-      "id": v1(),
+      "id": v4(),
+      "width": CONSTANT[type].INIT_WIDTH,
+      "height": CONSTANT[type].INIT_HEIGHT,
       "left": CONSTANT[type].INIT_LEFT,
       "top": CONSTANT[type].INIT_TOP,
       "type": type,
       "property": CONSTANT[type].PROPERTY,
-      "backGroundColor": CONSTANT[type].BACKGROUND_COLOR,
       "borderWidth": CONSTANT[type].BORDER_THICK,
       "borderRadius": CONSTANT[type].BORDER_RADIUS,
       "borderColor": CONSTANT[type].BORDER_COLOR,
+      "backGroundColor": CONSTANT[type].BACKGROUND_COLOR,
       "fontSize": CONSTANT[type].FONT_SIZE,
-      "width": CONSTANT[type].INIT_WIDTH,
-      "height": CONSTANT[type].INIT_HEIGHT,
       "selected": false,
     }
   }
 
-  handleAddItem = (type) => {
-    let item = this.createNewItem(type)
+  addControl = (type) => {
+    let item = this.createNewControl(type)
     this.state.work.items.push(item)
     this.setState(this.state.work)
   }
 
-  handleKeyEvent = (e) => {
+  handleKeyOp = (event) => {
     // e.preventDefault();
 
-    console.log(e.key);
+    console.log(event.key);
     console.log(this.state.selected);
-    if (e.key === "d" && e.ctrlKey && this.state.selected) {
-      e.preventDefault();
+    if (event.key === "d" && event.ctrlKey && this.state.selected) {
+      event.preventDefault();
 
 console.log('dup');
-      this.handleDuplicate();
-    } else if ((e.key == "Delete"||e.keycode==8) && this.state.selected) {
+      this.dupControl();
+    } else if ((event.key == "Delete"||event.keycode==8) && this.state.selected) {
       console.log('deleting');
 
-      this.handleDelete();
+      this.deleteControl();
     }
   }
 
-  handleDuplicate = () => {
+  dupControl = () => {
     const newItem = JSON.parse(JSON.stringify(this.state.selected));
-    newItem.id = v1();
+    newItem.id = v4();
     newItem.left = this.state.selected.left - 100;
     newItem.top = this.state.selected.top - 100;
     this.state.work.items.push(newItem)
     this.setState(this.state.work)
   }
 
-  handleDelete = () => {
+  deleteControl = () => {
     const toDelete = this.state.selected;
     for (let i = 0; i < this.state.work.items.length; i++)
       if (this.state.work.items[i] === toDelete)
@@ -181,7 +182,7 @@ console.log('dup');
 
   render() {
     const selected = this.state.selected;
-    document.body.addEventListener('keydown', this.handleKeyEvent);
+    document.body.addEventListener('keydown', this.handleKeyOp);
 
     if (!this.props.auth.uid) {
       return <Redirect to="/login" />;
@@ -202,22 +203,22 @@ console.log('dup');
 
     return (
       <div className='row' onKeyPress={this.handleKeyPress} >
-        <ToolMapLeft
-          handleModalOpen={this.handleModalOpen}
-          handleModalClose={this.handleModalClose}
+        <LeftOpZone
+          handleModalOpen={this.openModal}
+          handleModalClose={this.closeModal}
           handleSaveWork={this.handleSaveWork}
           handleGoHome={this.handleGoHome}
           state={this.state}
-          handleAddItem={this.handleAddItem}
+          handleAddItem={this.addControl}
           handleWorkModified={this.handleWorkModified} />
 
-        <DisplayPlace  work={work} state={this.state}
+        <FrameTable  work={work} state={this.state}
           handleWorkModified={this.handleWorkModified}
           handleWorkUnmodified={this.handleWorkUnmodified}
           handleSelect={this.handleSelect}
           handleUnselect={this.handleUnselect} />
 
-        <ToolMapRight work={work} state={this.state}
+        <RightOpZone work={work} state={this.state}
           handleWorkModified={this.handleWorkModified}
           handleWorkUnmodified={this.handleWorkUnmodified} />
 
@@ -226,9 +227,9 @@ console.log('dup');
   }
 }
 const mapStateToProps = (state, ownProps) => {
-  const { id } = ownProps.match.params;
-  const { workLists } = state.firestore.data;
-  const work = workLists ? workLists[id] : null;
+  let { id } = ownProps.match.params;
+  let { workLists } = state.firestore.data;
+  let work = workLists ? workLists[id] : null;
   if (work) {
     work.id = id;
   }

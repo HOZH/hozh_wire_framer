@@ -19,18 +19,19 @@ class DatabaseTester extends React.Component {
 
     handleReset = () => {
         const fireStore = getFirestore();
-        todoJson.workLists.forEach(todoListJson => {
+        todoJson.workLists.forEach(dataJson => {
             fireStore.collection('workLists').add({
-                name: todoListJson.name,
-                owner: todoListJson.owner,
-                items: todoListJson.items,
-                screenWidth: todoListJson.screenWidth,
-                screenHeight: todoListJson.screenHeight,
+                name: dataJson.name,
+                owner: dataJson.owner,
+                items: dataJson.items,
+                screenWidth: dataJson.screenWidth,
+                screenHeight: dataJson.screenHeight,
                 timestamp: fireStore.FieldValue.serverTimestamp()
             }).then(() => {
-                console.log("DATABASE RESET");
+                console.log("reset database");
             }).catch((err) => {
-                console.log(err);
+                // console.log(err);
+                console.err(err)
             });
         });
     }
@@ -39,7 +40,7 @@ class DatabaseTester extends React.Component {
         return (
             <div>
                 <button onClick={this.handleClear}>Clear Database</button>
-                <button onClick={this.handleReset}>Reset Database</button>
+                <button onClick={this.handleReset}>Load Database</button>
             </div>)
     }
 }

@@ -14,6 +14,7 @@ class Navbar extends React.Component {
     const databaseTester = auth.uid&&profile.type=="admin" ? (<Link to="/admin" className="tester">databseTester</Link>):"";
 
     console.log('123',profile)
+    console.log(auth)
 
     return (
       <nav className="nav-wrapper grey darken-3">

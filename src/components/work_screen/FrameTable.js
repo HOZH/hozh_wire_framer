@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import { Icon, Button } from 'react-materialize';
 
-import Item from "./Item"
+import Item from "./Control"
 
 
 
-class DisplayPlace extends Component {
+export default class FrameTable extends Component {
 
 
     render() {
@@ -24,14 +24,14 @@ class DisplayPlace extends Component {
                         <React.Fragment >
                             <div className="zoom-tool">
                                 <Button small
-                                    waves="red"
+                                    // waves="red"
                                     node="button"
                                     className="col s3 work-top-button bt1"
                                     icon={<Icon>zoom_in</Icon>}
                                     onClick={zoomIn}>
                                 </Button>
                                 <Button small
-                                    waves="red"
+                                    // waves="red"
                                     node="button"
                                     className="col s3 work-top-button bt2"
 
@@ -39,7 +39,9 @@ class DisplayPlace extends Component {
                                     onClick={zoomOut}>
                                 </Button>
                             </div>
-                            <TransformComponent style={{background:"white"}} >
+                            <TransformComponent
+                            //  style={{background:"white"}}
+                              >
                                 <div style={{ height: "100%", width: "100%" }}>
                                     <div className="display-board center" style={{
                                         width: this.props.state.work.screenWidth + "px",
@@ -68,4 +70,4 @@ class DisplayPlace extends Component {
     }
 }
 
-export default DisplayPlace;
+// export default DisplayPlace;

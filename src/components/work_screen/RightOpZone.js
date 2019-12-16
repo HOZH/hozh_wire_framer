@@ -4,27 +4,29 @@ import ColorPicker from './ColorPicker'
 import CONSTANT from '../Constant'
 
 
-class ToolMapRight extends Component {
+class RightOpZone extends Component {
 
     state = {
         screenWidth: this.props.state.work.screenWidth,
         screenHeight: this.props.state.work.screenHeight,
         modalActive: false,
         buttonActive: false,
-
         property: "",
     }
 
-    handleChange = (e) => {
-        e.persist();
-        const target = e.target;
+    handleChange = (event) => {
+        event.persist();
+        console.log(event)
+
+        const target = event.target;
         this.setState({ [target.id]: target.value, buttonActive: true });
         this.props.handleWorkModified();
     }
 
-    handleSelectedChange = (e) => {
+    handleSelectedChange = (event) => {
         // e.stopPropagation();
-                const target = e.target;
+        console.log(event)
+                const target = event.target;
 
         this.props.state.selected[target.id] = target.value;
         this.setState(this.props.state.selected);
@@ -33,12 +35,13 @@ class ToolMapRight extends Component {
 
     updateFrame = () => {
 
-        let width = this.state.screenWidth > CONSTANT.DISPLAY.MAX_WIDTH ?
-            CONSTANT.DISPLAY.MAX_WIDTH : this.state.screenWidth < CONSTANT.DISPLAY.MIN_WIDTH ?
-                CONSTANT.DISPLAY.MIN_WIDTH : this.state.screenWidth;
         let height = this.state.screenHeight > CONSTANT.DISPLAY.MAX_HEIGHT ?
             CONSTANT.DISPLAY.MAX_HEIGHT : this.state.screenHeight < CONSTANT.DISPLAY.MIN_HEIGHT ?
                 CONSTANT.DISPLAY.MIN_HEIGHT : this.state.screenHeight;
+        let width = this.state.screenWidth > CONSTANT.DISPLAY.MAX_WIDTH ?
+            CONSTANT.DISPLAY.MAX_WIDTH : this.state.screenWidth < CONSTANT.DISPLAY.MIN_WIDTH ?
+                CONSTANT.DISPLAY.MIN_WIDTH : this.state.screenWidth;
+      
 
         this.setState({ screenWidth: width, screenHeight: height, buttonActive: false })
         this.props.state.work.screenWidth = width;
@@ -48,12 +51,13 @@ class ToolMapRight extends Component {
     }
 
     buttonStatus = () => {
+        console.log(this.state)
         return this.state.buttonActive ? "" : "frame-button";
     }
 
     render() {
-        const selected = this.props.state.selected
-        const state = this.props.state;
+        let selected = this.props.state.selected
+        let state = this.props.state;
         return (
             <div className="col s3 total-toolmap">
                 <Button small className={"btn update-frame-button " + this.buttonStatus()} onClick={this.updateFrame}>update</Button>
@@ -97,4 +101,4 @@ class ToolMapRight extends Component {
     }
 }
 
-export default ToolMapRight;
+export default RightOpZone;

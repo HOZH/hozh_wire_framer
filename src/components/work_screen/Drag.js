@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import ResizableRect from 'react-resizable-rotatable-draggable'
 import { Rnd } from "react-rnd";
+import ResizableRect from 'react-resizable-rotatable-draggable'
 import { interfaceDeclaration } from '@babel/types';
 
 const style = {
@@ -25,26 +25,26 @@ export default class Drag extends Component {
     }
 
 
-    handleDrag = (e, d) => {
+    handleDrag = (event, dragging) => {
         if (this.props.item.selected) {
-            this.props.item.left = d.x;
-            this.props.item.top = d.y;
+            this.props.item.left = dragging.x;
+            this.props.item.top = dragging.y;
             this.setState(this.props.item);
             this.props.handleWorkModified();
         }
     }
 
-    createItemByType = () => {
-        const item = this.props.item;
-        const { borderRadius,borderColor,borderWidth,fontSize,backgroundColor} = item
-        const itemStyle = {
-            "width":"100%",
-            "height":"100%",
-            "borderRadius":borderRadius+"px",
-            "borderColor":borderColor+"",
-            "borderWidth":borderWidth+"",
-            "fontSize":fontSize+"px",
-            "backgroundColor":backgroundColor+"",
+    buildControl = () => {
+        let item = this.props.item;
+        let { borderRadius, borderColor, borderWidth, fontSize, backgroundColor } = item
+        let itemStyle = {
+            "width": "100%",
+            "height": "100%",
+            "borderRadius": borderRadius + "px",
+            "borderColor": borderColor + "",
+            "borderWidth": borderWidth + "",
+            "fontSize": fontSize + "px",
+            "backgroundColor": backgroundColor + "",
             // borderStyle:"solid"
 
         }
@@ -53,34 +53,35 @@ export default class Drag extends Component {
         if (item.type === "BUTTON")
             // return (<button className="dragger" style={itemStyle}>{item ? item.property : ""}</button>);
             // return (<input type="button"></input>)
-            return (<button className="dragger btn--floating btn_large waves-effect waves-light" 
-            // style={itemStyle}
-            style={{...itemStyle,background:"inherit"}}
+            return (<button className="dragger btn--floating btn_large waves-effect waves-light"
+                // style={itemStyle}
+                style={{ ...itemStyle, background: "inherit" }}
             >{item ? item.property : ""}</button>);
 
         if (item.type === "LABEL")
-            return (<label className="dragger" 
-            style={{...itemStyle,fontSize:fontSize+"px"}}
+            return (<label className="dragger"
+                style={{ ...itemStyle, fontSize: fontSize + "px" }}
             >{item ? item.property : ""}</label>);
         if (item.type === "INPUT")
-            return (<input className="dragger" value={item ? item.property : ""} 
-            style={itemStyle}
+            return (<input className="dragger" value={item ? item.property : ""}
+                style={itemStyle}
             // style={{}}
-             ></input>);
+            ></input>);
         return null;
     }
 
     render() {
-        const item = this.props.item;
-        const { fontSize, borderWidth, borderRadius, borderColor, backGroundColor } = item;
+        const current_control = this.props.item;
+        const { fontSize, borderWidth, borderRadius, borderColor, backGroundColor } = current_control;
         let style = {
             // height:"70%",
-            fontSize: fontSize + "px",
-            borderWidth: borderWidth + "px",
             borderRadius: borderRadius + "px",
             borderColor: borderColor,
             borderStyle: "solid",
             backgroundColor: backGroundColor + "",
+            fontSize: fontSize + "px",
+            borderWidth: borderWidth + "px",
+
         }
         const cornerStyle = {
             border: "1px solid black",
@@ -91,24 +92,27 @@ export default class Drag extends Component {
 
         return (
 
-            <div id={item.id} style={{ overflow: "auto" }} className={this.typeControll}>
+            <div id={current_control.id} style={{ overflow: "auto" }} className={this.typeControll}>
                 <Rnd
                     style={style}
                     default={{
-                        x: item.left,
-                        y: item.top,
-                        width: item.width,
-                        height: item.height
+                        x: current_control.left,
+                        y: current_control.top,
+                        width: current_control.width,
+                        height: current_control.height
                     }}
                     onDragStop={this.handleDrag}
                     onResizeStop={this.handleResize}
                     resizeHandleStyles={{
-                        bottomLeft: item.selected ? cornerStyle : "",
-                        bottomRight: item.selected ? cornerStyle : "",
-                        topLeft: item.selected ? cornerStyle : "",
-                        topRight: item.selected ? cornerStyle : "",
+
+
+                        topRight: current_control.selected ? cornerStyle : "",
+                        topLeft: current_control.selected ? cornerStyle : "",
+                        bottomRight: current_control.selected ? cornerStyle : "",
+                        bottomLeft: current_control.selected ? cornerStyle : "",
+
                     }}
-                >{this.createItemByType()}
+                >{this.buildControl()}
                 </Rnd>
 
             </div >

@@ -3,18 +3,18 @@ import { SketchPicker } from 'react-color';
 import React, { Component } from 'react';
 
 
-class ColorPicker extends Component {
+export default class ColorPicker extends Component {
 
   state = {
     displayColorPicker: false,
-    color: "#c17de8",
+    color: "aqua",
   };
 
-  handleClick = () => {
+  handleClick = (event) => {
     this.setState({ displayColorPicker: !this.state.displayColorPicker })
   };
 
-  handleClose = () => {
+  handleClose = (event) => {
     this.setState({ displayColorPicker: false })
   };
 
@@ -37,11 +37,11 @@ class ColorPicker extends Component {
     else
       selected = this.props.state.selected[this.props.type]
 
-    const styles = reactCSS({
+    const colorStyles = reactCSS({
       'default': {
         color: {
-          width: '36px',
-          height: '14px',
+          width: '40px',
+          height: '15px',
           borderRadius: '100%',
           background: selected,
         },
@@ -69,11 +69,11 @@ class ColorPicker extends Component {
     });
     return (
       <div className="right" style={{ marginTop: "-10%" }}>
-        <div style={styles.swatch} onClick={this.handleClick}>
-          <div style={styles.color} />
+        <div style={colorStyles.swatch} onClick={this.handleClick}>
+          <div style={colorStyles.color} />
         </div>
-        {this.state.displayColorPicker ? <div style={styles.popover}>
-          <div style={styles.cover} onClick={this.handleClose} />
+        {this.state.displayColorPicker ? <div style={colorStyles.popover}>
+          <div style={colorStyles.cover} onClick={this.handleClose} />
           <SketchPicker
             color={this.state.color}
             onChange={this.handleChange}
@@ -85,4 +85,4 @@ class ColorPicker extends Component {
   }
 }
 
-export default ColorPicker;
+// export default ColorPicker;

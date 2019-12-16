@@ -6,12 +6,13 @@ import { compose } from 'redux';
 
 
 
-class ToolMapLeft extends Component {
+class LeftOpZone extends Component {
 
-    handleChange = (e) => {
+    handleChange = (event) => {
 
-        e.persist();
-        const target = e.target;
+        event.persist();
+        console.log(event)
+        let target = event.target;
         this.props.state.work[target.id] = target.value;
         this.props.handleWorkModified();
         this.setState(this.props.state.work);
@@ -64,7 +65,7 @@ class ToolMapLeft extends Component {
                         <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "save")}>Yes</Button>
                         <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "save")}>No</Button>
                         <footer className="dialog_footer">
-                        test msg...                    </footer>
+                            this action cannot be undo                   </footer>
                     </Modal>
                     <Modal
                         bottomSheet={false}
@@ -73,28 +74,29 @@ class ToolMapLeft extends Component {
                         open={this.props.state.modalActive2}
                         style={{ maxHeight: 'none' }}
                         options={{
+                            opacity: 0.5,
+                            outDuration: 250,
+                            preventScrolling: false,
+                            startingTop: '4%',
+                            onOpenStart: null,
                             dismissible: false,
                             endingTop: '10%',
                             inDuration: 250,
                             onCloseEnd: null,
                             onCloseStart: null,
                             onOpenEnd: null,
-                            onOpenStart: null,
-                            opacity: 0.5,
-                            outDuration: 250,
-                            preventScrolling: false,
-                            startingTop: '4%'
+
                         }}
                     >
                         <section className="dialog_content">
-                            <p><strong>Are you sure you want to cancel this work?</strong></p>
-                            <p><strong>THERE ARE UNSAVE MODIFICATIONS!!!!!!!!!</strong></p>
+                            <p><b>Are you willing to close this work</b></p>
+                            {/* <p><b>this action cannot be undo</b></p> */}
                         </section>
                         <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "cancel")}>Yes</Button>
                         <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "cancel")}>No</Button>
                         <Button waves="orange" id="dialog_yes_button" className='btn modal-button' onClick={this.props.handleSaveWork.bind(this, "cancel-save")}>Save and Quit</Button>
                         <footer className="dialog_footer">
-test msg...                    </footer>
+                            this action cannot be undo                </footer>
                     </Modal>
                 </div>
 
@@ -134,10 +136,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
         { collection: 'workLists' },
     ]),
-)(ToolMapLeft);
+)(LeftOpZone);
