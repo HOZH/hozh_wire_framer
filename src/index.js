@@ -10,5 +10,5 @@ import './css/my.css'
 import ReactReduxFirebaseApp from './store/ReactReduxFirebaseApp'
 
 ReactDOM.render(
-  <ReactReduxFirebaseApp />, document.getElementById('root')
+    <ReactReduxFirebaseApp/>, document.getElementById('root')
 );

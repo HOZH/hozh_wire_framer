@@ -1,7 +1,5 @@
-import React, { Component } from 'react'
-import { Rnd } from "react-rnd";
-import ResizableRect from 'react-resizable-rotatable-draggable'
-import { interfaceDeclaration } from '@babel/types';
+import React, {Component} from 'react'
+import {Rnd} from "react-rnd";
 
 const style = {
     display: "flex",
@@ -36,7 +34,7 @@ export default class Drag extends Component {
 
     buildControl = () => {
         let item = this.props.item;
-        let { borderRadius, borderColor, borderWidth, fontSize, backgroundColor } = item
+        let {borderRadius, borderColor, borderWidth, fontSize, backgroundColor} = item
         let itemStyle = {
             "width": "100%",
             "height": "100%",
@@ -55,24 +53,24 @@ export default class Drag extends Component {
             // return (<input type="button"></input>)
             return (<button className="dragger btn--floating btn_large waves-effect waves-light"
                 // style={itemStyle}
-                style={{ ...itemStyle, background: "inherit" }}
+                            style={{...itemStyle, background: "inherit"}}
             >{item ? item.property : ""}</button>);
 
         if (item.type === "LABEL")
             return (<label className="dragger"
-                style={{ ...itemStyle, fontSize: fontSize + "px" }}
+                           style={{...itemStyle, fontSize: fontSize + "px"}}
             >{item ? item.property : ""}</label>);
         if (item.type === "INPUT")
             return (<input className="dragger" value={item ? item.property : ""}
-                style={itemStyle}
-            // style={{}}
+                           style={itemStyle}
+                // style={{}}
             ></input>);
         return null;
     }
 
     render() {
         const current_control = this.props.item;
-        const { fontSize, borderWidth, borderRadius, borderColor, backGroundColor } = current_control;
+        const {fontSize, borderWidth, borderRadius, borderColor, backGroundColor} = current_control;
         let style = {
             // height:"70%",
             borderRadius: borderRadius + "px",
@@ -92,7 +90,7 @@ export default class Drag extends Component {
 
         return (
 
-            <div id={current_control.id} style={{ overflow: "auto" }} className={this.typeControll}>
+            <div id={current_control.id} style={{overflow: "auto"}} className={this.typeControll}>
                 <Rnd
                     style={style}
                     default={{
@@ -115,7 +113,7 @@ export default class Drag extends Component {
                 >{this.buildControl()}
                 </Rnd>
 
-            </div >
+            </div>
         )
     }
 }

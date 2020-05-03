@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Icon, Button, Modal, TextInput } from 'react-materialize';
-import { firestoreConnect } from 'react-redux-firebase';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
+import React, {Component} from 'react';
+import {Button, Icon, Modal, TextInput} from 'react-materialize';
+import {firestoreConnect} from 'react-redux-firebase';
+import {connect} from 'react-redux';
+import {compose} from 'redux';
 
 
 const tmpStyle = {}
@@ -22,8 +22,8 @@ class LeftOpZone extends Component {
 
     render() {
         return (
-            <div className="col s3 total-toolmap" >
-                <div className="tool-map row" style={{ height: "6.5%" }}>
+            <div className="col s3 total-toolmap">
+                <div className="tool-map row" style={{height: "6.5%"}}>
 
                     <Button
                         small
@@ -31,19 +31,19 @@ class LeftOpZone extends Component {
                         className="work-top-button"
                         // waves="purple"
 
-                        style={{ width: "25%" }}
+                        style={{width: "25%"}}
                         icon={<Icon>save</Icon>}
                         onClick={this.props.handleModalOpen.bind(this, "save")}>
                     </Button>
 
                     <Button small
-                        node="button"
+                            node="button"
                         // waves="teal"
 
-                        className="work-top-button"
-                        style={{ marginLeft: "75%", marginTop: "-13%", width: "25%" }}
-                        icon={<Icon>cancel</Icon>}
-                        onClick={this.props.handleModalOpen.bind(this, "cancel")}>
+                            className="work-top-button"
+                            style={{marginLeft: "75%", marginTop: "-13%", width: "25%"}}
+                            icon={<Icon>cancel</Icon>}
+                            onClick={this.props.handleModalOpen.bind(this, "cancel")}>
                     </Button>
 
                     <Modal
@@ -51,7 +51,7 @@ class LeftOpZone extends Component {
                         fixedFooter={false}
                         header="Save Work?"
                         open={this.props.state.modalActive1}
-                        style={{ maxHeight: 'none' }}
+                        style={{maxHeight: 'none'}}
                         options={{
                             dismissible: false,
                             endingTop: '10%',
@@ -77,16 +77,18 @@ class LeftOpZone extends Component {
                             className='btn modal-button'
                             onClick={this.props.handleSaveWork.bind(this, "save")}
                         >Yes</Button>
-                        <Button waves="yellow" id="dialog_no_button" className='btn modal-button' onClick={this.props.handleModalClose.bind(this, "save")}>No</Button>
+                        <Button waves="yellow" id="dialog_no_button" className='btn modal-button'
+                                onClick={this.props.handleModalClose.bind(this, "save")}>No</Button>
                         <footer className="dialog_footer">
-                            this action cannot be undo                   </footer>
+                            this action cannot be undo
+                        </footer>
                     </Modal>
                     <Modal
                         bottomSheet={false}
                         fixedFooter={false}
                         header="Cancel Work?"
                         open={this.props.state.modalActive2}
-                        style={{ maxHeight: 'none' }}
+                        style={{maxHeight: 'none'}}
                         options={{
                             opacity: 0.5,
                             outDuration: 250,
@@ -125,25 +127,27 @@ class LeftOpZone extends Component {
                             className='btn modal-button'
                             onClick={this.props.handleSaveWork.bind(this, "cancel-save")}>Save and Quit</Button>
                         <footer className="dialog_footer">
-                            this action cannot be undo                </footer>
+                            this action cannot be undo
+                        </footer>
                     </Modal>
                 </div>
 
                 <div className="tool-map row"
-                    style={{ tmpStyle, height: "103.5%" }}>
+                     style={{tmpStyle, height: "103.5%"}}>
                     <div
                         className="work-name-input">
                         <div
-                            className="work-property-label">Work Name</div>
+                            className="work-property-label">Work Name
+                        </div>
                         <TextInput
                             placeholder="Insert here"
                             className="work-input"
                             id='name'
                             value={this.props.state.work ? this.props.state.work.name : ""}
-                            onChange={this.handleChange} />
+                            onChange={this.handleChange}/>
                     </div>
                     <div
-                        className="work-card" style={{ tmpStyle, marginTop: '20%' }}>
+                        className="work-card" style={{tmpStyle, marginTop: '20%'}}>
                         <div
                             className="work-container" onClick={this.props.handleAddItem.bind(this, "Container")}></div>
                         <label
@@ -152,23 +156,25 @@ class LeftOpZone extends Component {
                     <div
                         className="work-card">
                         <p
-                            style={{ cursor: "pointer" }}
+                            style={{cursor: "pointer"}}
                             onClick={this.props.handleAddItem.bind(this, "Label")}
                         >prompt for input:</p>
                         <p
-                            className="work-property-label" style={{ tmpStyle, marginLeft: "10%" }}>label</p>
+                            className="work-property-label" style={{tmpStyle, marginLeft: "10%"}}>label</p>
                     </div>
                     <div
                         className="work-card">
                         <div
-                            className="work-button" onClick={this.props.handleAddItem.bind(this, "Button")}>submit</div>
+                            className="work-button" onClick={this.props.handleAddItem.bind(this, "Button")}>submit
+                        </div>
                         <label
                             className="work-property-label">button</label>
                     </div>
                     <div
                         className="work-card">
                         <div
-                            className="work-textfield" onClick={this.props.handleAddItem.bind(this, "Input")}>input</div>
+                            className="work-textfield" onClick={this.props.handleAddItem.bind(this, "Input")}>input
+                        </div>
                         <label
                             className="work-property-label">textfield</label>
                     </div>
@@ -189,6 +195,6 @@ const mapStateToProps = (state, ownProps) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        { collection: 'workLists' },
+        {collection: 'workLists'},
     ]),
 )(LeftOpZone);

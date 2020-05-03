@@ -1,7 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import todoJson from './TestTodoListData.json'
-import { getFirestore } from 'redux-firestore';
+import {getFirestore} from 'redux-firestore';
 
 class DatabaseTester extends React.Component {
 

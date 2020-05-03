@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { TextInput, Button } from 'react-materialize';
+import React, {Component} from 'react';
+import {Button, TextInput} from 'react-materialize';
 import ColorPicker from './ColorPicker'
 import CONSTANT from '../Constant'
 
@@ -19,7 +19,7 @@ class RightOpZone extends Component {
         console.log(event)
 
         const target = event.target;
-        this.setState({ [target.id]: target.value, buttonActive: true });
+        this.setState({[target.id]: target.value, buttonActive: true});
         this.props.handleWorkModified();
     }
 
@@ -43,7 +43,7 @@ class RightOpZone extends Component {
                 CONSTANT.DISPLAY.MIN_WIDTH : this.state.screenWidth;
 
 
-        this.setState({ screenWidth: width, screenHeight: height, buttonActive: false })
+        this.setState({screenWidth: width, screenHeight: height, buttonActive: false})
         this.props.state.work.screenWidth = width;
         this.props.state.work.screenHeight = height;
         this.setState(this.props.state.work);
@@ -69,91 +69,99 @@ class RightOpZone extends Component {
 
                 <div
                     className="tool-map row"
-                    style={{ height: "20%" }}>
+                    style={{height: "20%"}}>
                     <div
-                        className="work-property-label">Width </div>
+                        className="work-property-label">Width
+                    </div>
                     <TextInput
                         type="number"
                         className="work-input update-frame-input"
                         id="screenWidth" value={this.state.screenWidth}
-                        onChange={this.handleChange} />
+                        onChange={this.handleChange}/>
                     <div
                         className="work-property-label"
-                        style={{ height: "40%", marginTop: "10px" }}>Height </div>
+                        style={{height: "40%", marginTop: "10px"}}>Height
+                    </div>
                     <TextInput
                         type="number"
                         className="work-input update-frame-input"
                         id="screenHeight"
                         value={this.state.screenHeight}
-                        onChange={this.handleChange} />
+                        onChange={this.handleChange}/>
                 </div>
                 <div
                     className="tool-map row"
-                    style={{ height: "90%" }}>
+                    style={{height: "90%"}}>
                     <div
                         className="work-properties"
-                        style={{ height: "15%" }}>
+                        style={{height: "15%"}}>
                         <div
                             className="work-property-label"
-                            style={{ marginTop: "5%" }}>Property</div>
+                            style={{marginTop: "5%"}}>Property
+                        </div>
                         <TextInput
                             className="work-input"
                             className="work-input"
                             id="property"
                             value={selected ? selected.property : ""}
-                            onChange={this.handleSelectedChange} />
+                            onChange={this.handleSelectedChange}/>
                     </div>
 
                     <div
                         className="work-properties"
-                        style={{ height: "15%" }}>
+                        style={{height: "15%"}}>
                         <div
-                            className="work-property-label" >Font Size: </div>
+                            className="work-property-label">Font Size:
+                        </div>
                         <TextInput
                             type="number"
                             className="work-input"
                             id="fontSize"
                             onChange={this.handleSelectedChange}
-                            value={selected ? selected.fontSize + "" : ""} />
+                            value={selected ? selected.fontSize + "" : ""}/>
                     </div>
                     <div
                         className="work-properties"
-                        style={{ height: "15%" }}>
+                        style={{height: "15%"}}>
                         <div
                             className="work-property-label"
-                        >Border Thickness </div>
+                        >Border Thickness
+                        </div>
                         <TextInput
                             type="number"
                             className="work-input"
                             id="borderWidth"
                             onChange={this.handleSelectedChange}
-                            value={selected ? selected.borderWidth + "" : ""} />
+                            value={selected ? selected.borderWidth + "" : ""}/>
                     </div>
                     <div
                         className="work-properties"
-                        style={{ height: "15%" }}>
+                        style={{height: "15%"}}>
                         <div
-                            className="work-property-label" >Border Radius </div>
+                            className="work-property-label">Border Radius
+                        </div>
                         <TextInput
                             type="number"
                             className="work-input"
                             id="borderRadius"
                             onChange={this.handleSelectedChange}
-                            value={selected ? selected.borderRadius + "" : ""} />
+                            value={selected ? selected.borderRadius + "" : ""}/>
                     </div>
                     <div
                         className="work-properties"
-                        style={{ marginTop: 25 }}>
+                        style={{marginTop: 25}}>
                         <div
-                            className="work-property-label" >Border Color:</div>
+                            className="work-property-label">Border Color:
+                        </div>
                         <ColorPicker
                             state={state}
                             type={"borderColor"}
-                            handleWorkModified={this.props.handleWorkModified} />
+                            handleWorkModified={this.props.handleWorkModified}/>
                     </div>
                     <div className="work-properties">
-                        <div className="work-property-label" >Background:</div>
-                        <ColorPicker state={state} type={"backGroundColor"} handleWorkModified={this.props.handleWorkModified} />
+                        <div className="work-property-label">Background:</div>
+                        <ColorPicker state={state} type={"backGroundColor"}
+                                     handleWorkModified={this.props.handleWorkModified}/>
                     </div>
 
                 </div>

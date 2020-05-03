@@ -1,5 +1,5 @@
-.card_due_date, .card_assigned_to, .card_completed, .card_pending{
-    top:50%;
+.card_due_date, .card_assigned_to, .card_completed, .card_pending {
+    top: 50%;
     font-size: 18px !important;
 }
 
@@ -11,7 +11,7 @@
     color: red;
 }
 
-.todo_list_link:hover{
+.todo_list_link:hover {
     background-color: yellow;
 }
 
@@ -22,198 +22,210 @@
 
 .list_page_title {
     font-size: 30px;
-    padding:20px
+    padding: 20px
 }
 
 .modal-footer {
-  display:none
+    display: none
 }
 
 .disable {
-  background-color: grey !important;
+    background-color: grey !important;
 }
 
 .trash:hover {
-color: var(--swatch-accent);
-background-color: #f6e58d;
-cursor: pointer;
+    color: var(--swatch-accent);
+    background-color: #f6e58d;
+    cursor: pointer;
 }
+
 .item:hover, .list:hover {
-  background-color: #f6e58d !important;
+    background-color: #f6e58d !important;
 }
 
 
 .delete-button {
-  position: absolute;
-  left: 80%;
-  top: 25%;
-  z-index: 5;
+    position: absolute;
+    left: 80%;
+    top: 25%;
+    z-index: 5;
 }
 
 .tool-map {
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  padding : 1px;
-  margin-top: 2px !important;
-  margin-bottom: 2px !important;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    padding: 1px;
+    margin-top: 2px !important;
+    margin-bottom: 2px !important;
 }
 
 .total-toolmap {
-  margin-top: 2px !important;
-  padding: 3px;
-  height: 600px;
+    margin-top: 2px !important;
+    padding: 3px;
+    height: 600px;
 }
 
 .work-input {
-  left:10%;
-  height: 1rem !important;
+    left: 10%;
+    height: 1rem !important;
 }
+
 .input-field {
 
-  width: 80%;
-  margin-top: 0;
-  margin-bottom: 0;
+    width: 80%;
+    margin-top: 0;
+    margin-bottom: 0;
 }
+
 .work-name-input {
-  text-align: center;
-  z-index: 10;
+    text-align: center;
+    z-index: 10;
 }
 
 .work-container {
-  cursor: pointer;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  background-color: white;
-  height: 60px;
+    cursor: pointer;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    background-color: white;
+    height: 60px;
 }
+
 .work-button {
-  cursor: pointer;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  text-align: center;
+    cursor: pointer;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    text-align: center;
 }
+
 .work-textfield {
-  cursor: pointer;
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  background-color: white;
-  margin-left: -10px;
-  margin-right: -10px;
+    cursor: pointer;
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    background-color: white;
+    margin-left: -10px;
+    margin-right: -10px;
 }
-.frame-properties{
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  height:25%;
+
+.frame-properties {
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    height: 25%;
 }
-.range-field{
-  top:-15px;
-  height:1%;
-  width: 90%;
-  left:5%;
+
+.range-field {
+    top: -15px;
+    height: 1%;
+    width: 90%;
+    left: 5%;
 }
+
 .work-card {
-  padding : 1px;
-  position : relative;
-  padding-top: 10%;
-  padding-left: 20%;
-  padding-right: 20%;
-  text-align: center;
+    padding: 1px;
+    position: relative;
+    padding-top: 10%;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: center;
 }
+
 .work-item-label {
-  cursor: pointer;
-  position: relative;
-  font-size: medium;
-  font-weight: bold;
-  color: black;
-  text-align: center;
-  margin-top: 10%;
+    cursor: pointer;
+    position: relative;
+    font-size: medium;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    margin-top: 10%;
 }
-.frame-label{
-  left:0% !important
+
+.frame-label {
+    left: 0% !important
 }
 
 .work-property-label {
-  position: relative;
-  font-size: medium;
-  font-weight: bold;
-  color: black;
-  width: 80%;
+    position: relative;
+    font-size: medium;
+    font-weight: bold;
+    color: black;
+    width: 80%;
 }
 
 .work-properties {
-  padding-bottom: 10%;
+    padding-bottom: 10%;
 }
 
 .work-property {
-  margin-top: 0px;
+    margin-top: 0px;
 }
 
 .display-place {
-  background-color: rgb(143, 143, 202);
-  height: 600px;
+    background-color: rgb(143, 143, 202);
+    height: 600px;
 }
-.display-board{
-  border-color: black;
-  border-width: 2px;
-  border-style: solid;
-  background-color: rgb(128, 80, 80);
-  margin-top: 10px;
-  margin-bottom: 10px;
+
+.display-board {
+    border-color: black;
+    border-width: 2px;
+    border-style: solid;
+    background-color: rgb(128, 80, 80);
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
+
 .work-top-button {
-  margin-left: 50%;
-  background-color: rgba(0,0,0,0);
-  color:black;
+    margin-left: 50%;
+    background-color: rgba(0, 0, 0, 0);
+    color: black;
 }
 
 .gblcbk {
-  cursor: move;
-  z-index: 0 !important;
-  border: 1px solid rgba(0,0,0,0) !important;
+    cursor: move;
+    z-index: 0 !important;
+    border: 1px solid rgba(0, 0, 0, 0) !important;
 }
 
-.TransformComponent-module_container__3NwNd{
-  width:100% !important;
-  height: 100% !important;
-  overflow: auto !important;
+.TransformComponent-module_container__3NwNd {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: auto !important;
 }
 
-.zoom-tool{
-  margin-left: -55%;
-  width: 52%;
-  margin-top: 1%
+.zoom-tool {
+    margin-left: -55%;
+    width: 52%;
+    margin-top: 1%
 }
 
-.update-frame-button{
-  z-index: 12;
-  position: absolute;
-  top: 15% ;
-  left:92.5%;
+.update-frame-button {
+    z-index: 12;
+    position: absolute;
+    top: 15%;
+    left: 92.5%;
 }
 
-.modal-button{
-  margin-left: 1%;
+.modal-button {
+    margin-left: 1%;
 }
 
-.frame-button{
-  cursor: disabled;
-  display: none;
+.frame-button {
+    cursor: disabled;
+    display: none;
 }
 
-.dragger{
-  display: auto !important;
-  text-align: center;
+.dragger {
+    display: auto !important;
+    text-align: center;
 }
 
-.dragger-button:hover{
-  background-color: blueviolet;
+.dragger-button:hover {
+    background-color: blueviolet;
 }
 
-.corner-box{
-  border: 1px solid black;
+.corner-box {
+    border: 1px solid black;
 }

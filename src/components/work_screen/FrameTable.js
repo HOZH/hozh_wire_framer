@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { Icon, Button } from 'react-materialize';
+import React, {Component} from 'react';
+import {TransformComponent, TransformWrapper} from "react-zoom-pan-pinch";
+import {Button, Icon} from 'react-materialize';
 
 import Item from "./Control"
-
 
 
 export default class FrameTable extends Component {
@@ -20,42 +19,42 @@ export default class FrameTable extends Component {
                     defaultPositionY={100}
                     wheel={false}
                 >
-                    {({ zoomIn, zoomOut, resetTransform, ...rest }) => (
-                        <React.Fragment >
+                    {({zoomIn, zoomOut, resetTransform, ...rest}) => (
+                        <React.Fragment>
                             <div className="zoom-tool">
                                 <Button small
                                     // waves="red"
-                                    node="button"
-                                    className="col s3 work-top-button bt1"
-                                    icon={<Icon>zoom_in</Icon>}
-                                    onClick={zoomIn}>
+                                        node="button"
+                                        className="col s3 work-top-button bt1"
+                                        icon={<Icon>zoom_in</Icon>}
+                                        onClick={zoomIn}>
                                 </Button>
                                 <Button small
                                     // waves="red"
-                                    node="button"
-                                    className="col s3 work-top-button bt2"
+                                        node="button"
+                                        className="col s3 work-top-button bt2"
 
-                                    icon={<Icon>zoom_out</Icon>}
-                                    onClick={zoomOut}>
+                                        icon={<Icon>zoom_out</Icon>}
+                                        onClick={zoomOut}>
                                 </Button>
                             </div>
                             <TransformComponent
-                            //  style={{background:"white"}}
-                              >
-                                <div style={{ height: "100%", width: "100%" }}>
+                                //  style={{background:"white"}}
+                            >
+                                <div style={{height: "100%", width: "100%"}}>
                                     <div className="display-board center" style={{
                                         width: this.props.state.work.screenWidth + "px",
                                         height: this.props.state.work.screenHeight + "px",
                                         zIndex: 3,
-                                        background:"white"
+                                        background: "white"
                                     }}
-                                        onClick={this.props.handleUnselect}>
+                                         onClick={this.props.handleUnselect}>
                                         {
                                             items && items.map(item => (
                                                 <Item item={item} key={item.id}
-                                                    handleSelect={this.props.handleSelect}
-                                                    handleWorkModified={this.props.handleWorkModified}
-                                                    state={this.props.state} />
+                                                      handleSelect={this.props.handleSelect}
+                                                      handleWorkModified={this.props.handleWorkModified}
+                                                      state={this.props.state}/>
                                             ))
                                         }
                                     </div>

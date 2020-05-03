@@ -1,8 +1,6 @@
-
-
 const Constant = {
     DISPLAY: {
-     
+
         MIN_WIDTH: 1,
         MIN_HEIGHT: 1,
         MAX_WIDTH: 5000,
@@ -11,7 +9,7 @@ const Constant = {
         INIT_HEIGHT: 800,
     },
     CONTAINER: {
-        
+
         BORDER_COLOR: "black",
         BORDER_RADIUS: "1",
         BORDER_THICK: "1",
@@ -24,7 +22,7 @@ const Constant = {
         INIT_TOP: 30,
     },
     LABEL: {
-      
+
         BORDER_COLOR: "black",
         BORDER_RADIUS: "1",
         BORDER_THICK: "1",

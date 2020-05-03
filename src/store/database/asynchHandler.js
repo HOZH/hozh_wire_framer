@@ -1,16 +1,16 @@
 import * as actionCreators from '../actions/actionCreators.js'
 
-export const loginHandler = ({ credentials, firebase }) => (dispatch, getState) => {
+export const loginHandler = ({credentials, firebase}) => (dispatch, getState) => {
     firebase.auth().signInWithEmailAndPassword(
-      credentials.email,
-      credentials.password,
+        credentials.email,
+        credentials.password,
     ).then(() => {
-      console.log("LOGIN_SUCCESS");
-      dispatch({ type: 'LOGIN_SUCCESS' });
+        console.log("LOGIN_SUCCESS");
+        dispatch({type: 'LOGIN_SUCCESS'});
     }).catch((err) => {
-      dispatch({ type: 'LOGIN_ERROR', err });
+        dispatch({type: 'LOGIN_ERROR', err});
     });
-  };
+};
 
 export const logoutHandler = (firebase) => (dispatch, getState) => {
     firebase.auth().signOut().then(() => {
@@ -18,7 +18,7 @@ export const logoutHandler = (firebase) => (dispatch, getState) => {
     });
 };
 
-export const registerHandler = (newUser, firebase) => (dispatch, getState, { getFirestore }) => {
+export const registerHandler = (newUser, firebase) => (dispatch, getState, {getFirestore}) => {
     const firestore = getFirestore();
     firebase.auth().createUserWithEmailAndPassword(
         newUser.email,

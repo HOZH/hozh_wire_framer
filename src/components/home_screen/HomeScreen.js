@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Redirect } from 'react-router-dom';
-import { firestoreConnect } from 'react-redux-firebase';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {compose} from 'redux';
+import {Redirect} from 'react-router-dom';
 
 import Banner from './Banner'
 import WorkLists from './WorkLists'
@@ -10,29 +9,29 @@ import v1 from 'uuid'
 
 class HomeScreen extends Component {
     handleNewList = () => {
-        console.log(12,this.props)
-        this.props.history.push('/'+this.props.auth.uid+'/work/' + v1());
+        console.log(12, this.props)
+        this.props.history.push('/' + this.props.auth.uid + '/work/' + v1());
     }
 
     render() {
         if (!this.props.auth.uid) {
-            return <Redirect to="/login" />;
+            return <Redirect to="/login"/>;
         }
 
         return (
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m4">
-                        <WorkLists />
+                        <WorkLists/>
                     </div>
 
                     <div className="col s8">
-                        <Banner />
+                        <Banner/>
 
                         <div className="home_new_list_container row center">
                             <button className="home_new_list_button " onClick={this.handleNewList}>
                                 Create a Wireframe
-                                </button>
+                            </button>
                         </div>
                     </div>
                 </div>

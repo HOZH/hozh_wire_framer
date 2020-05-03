@@ -1,10 +1,10 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
-import { createStore, applyMiddleware, compose } from 'redux';
-import { Provider } from 'react-redux';
+import {applyMiddleware, compose, createStore} from 'redux';
+import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-import { createFirestoreInstance, reduxFirestore, getFirestore } from 'redux-firestore';
-import { ReactReduxFirebaseProvider, getFirebase } from 'react-redux-firebase';
+import {createFirestoreInstance, getFirestore, reduxFirestore} from 'redux-firestore';
+import {getFirebase, ReactReduxFirebaseProvider} from 'react-redux-firebase';
 import firebase from '../config/firebaseConfig';
 import rootReducer from './reducers/rootReducer';
 import App from '../App';
@@ -26,7 +26,7 @@ class ReactReduxFirebaseApp extends React.Component {
 
         const store = createStore(rootReducer,
             composeEnhancers(
-                applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+                applyMiddleware(thunk.withExtraArgument({getFirebase, getFirestore})),
                 reduxFirestore(firebase), // still need this line to get access to firestore via getFirestore function (in projectActions, for example)
             )
         );
@@ -48,7 +48,7 @@ class ReactReduxFirebaseApp extends React.Component {
         return (
             <Provider store={this.state.store}>
                 <ReactReduxFirebaseProvider {...this.state.rrfProps}>
-                    <App />
+                    <App/>
                 </ReactReduxFirebaseProvider>
             </Provider>
         )
